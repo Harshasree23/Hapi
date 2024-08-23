@@ -7,7 +7,7 @@ const handleGetApiproject = async (req,res) =>
     try {
         const projects = await projectModel.find({}, { _id: 0, __v: 0 });
         res.header('Content-Type', 'application/json');
-        res.json(projects);
+        res.send(projects);
     }  
     catch (error) {
         console.error(error);

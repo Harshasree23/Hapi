@@ -7,7 +7,7 @@ const handleGetApicontact = async (req,res) =>
     try {
         const contacts = await contactModel.find({}, { _id: 0, __v: 0 });
         res.header('Content-Type', 'application/json');
-        res.json(contacts);
+        res.send(contacts);
     }  
     catch (error) {
         console.error(error);

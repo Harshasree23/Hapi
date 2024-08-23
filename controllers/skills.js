@@ -7,7 +7,7 @@ const handleGetApiSkill = async (req,res) =>
     try {
         const Skills = await skillModel.find({}, { _id: 0, __v: 0 });
         res.header('Content-Type', 'application/json');
-        res.json(Skills);
+        res.send(Skills);
     }  
     catch (error) {
         console.error(error);

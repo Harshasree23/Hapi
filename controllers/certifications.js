@@ -6,7 +6,7 @@ const handleGetApicertificate = async (req,res) =>
     try {
         const certificates = await certificateModel.find({}, { _id: 0, __v: 0 });
         res.header('Content-Type', 'application/json');
-        res.json(certificates);
+        res.send(certificates);
     }  
     catch (error) {
         console.error(error);

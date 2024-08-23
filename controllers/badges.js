@@ -7,7 +7,7 @@ const handleGetApiBadge = async (req,res) =>
     try {
         const badges = await badgeModel.find({}, { _id: 0, __v: 0 });
         res.header('Content-Type', 'application/json');
-        res.json(badges);
+        res.send(badges);
     }  
     catch (error) {
         console.error(error);
