@@ -6,6 +6,7 @@ const handleGetApiachievement = async (req,res) =>
 {
     try {
         const achievements = await achievementModel.find({}, { _id: 0, __v: 0 });
+        res.header('Content-Type', 'application/json');
         res.json(achievements );
     }  
     catch (error) {
@@ -42,7 +43,7 @@ const handlePostApiachievement = async (req,res) => {
             skills: skillArray, 
             });
         }
-
+        
         return res.redirect('/api/achievements');
     }
     catch(err){

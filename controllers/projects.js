@@ -6,6 +6,7 @@ const handleGetApiproject = async (req,res) =>
 {
     try {
         const projects = await projectModel.find({}, { _id: 0, __v: 0 });
+        res.header('Content-Type', 'application/json');
         res.json(projects);
     }  
     catch (error) {
@@ -45,7 +46,6 @@ const handlePostApiproject = async (req,res) => {
             video,
             });
         }
-        
         return res.redirect('/api/projects');
     }
     catch(err){

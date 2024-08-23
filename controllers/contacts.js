@@ -6,6 +6,7 @@ const handleGetApicontact = async (req,res) =>
 {
     try {
         const contacts = await contactModel.find({}, { _id: 0, __v: 0 });
+        res.header('Content-Type', 'application/json');
         res.json(contacts);
     }  
     catch (error) {
@@ -58,7 +59,7 @@ const handlePostApicontact = async (req,res) => {
             });
         }
         
-
+        
         return res.redirect('/api/contacts');
         
     }
