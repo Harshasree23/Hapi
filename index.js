@@ -3,11 +3,10 @@ const path = require('path');
 const { apiRoute } = require('./routes/api');
 const { userRoute } = require('./routes/user');
 const { makeConnection } = require('./connectToDb.js');
-
+const portfinder = require('portfinder');
 
 // Creating app
 const app = express();
-const PORT = 8000;
 
 
 // connect to DB
@@ -26,6 +25,13 @@ app.use('/api',apiRoute);
 app.use('/user',userRoute);
 
 // connect
-app.listen(8000, 
-    () => console.log(`server started at port ${PORT}`)
-)
+portfinder.basePort = 3000; // Starting port
+portfinder.getPort((err, port) => {
+  if (err) {
+    console.error('Error finding a free port:', err);
+  } else {
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
+    });
+  }
+});
