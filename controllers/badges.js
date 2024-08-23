@@ -1,5 +1,5 @@
 const { badgeModel } = require("../models/badges")
-const { password } = require('../config.json');
+// const { password } = require('../config.json');
 
 
 const handleGetApiBadge = async (req,res) => 
@@ -34,7 +34,7 @@ const handlePostApiBadge = async (req,res) => {
         const { badgeName, badgeDescription, badgeUrl, skills, verify, company } = req.body;
         skillsArray =  skills.split(',').map(skill => skill.trim()); // Split and trim skills
         
-        if( req.body.password === password )
+        if( req.body.password === process.env.password )
         {
             const newBadge = await badgeModel.create({
             badgeName,

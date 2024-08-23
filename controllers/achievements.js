@@ -1,5 +1,5 @@
 const { achievementModel } = require("../models/achievements.js")
-const { password } = require('../config.json');
+// const { password } = require('../config.json');
 
 
 const handleGetApiachievement = async (req,res) => 
@@ -34,7 +34,7 @@ const handlePostApiachievement = async (req,res) => {
         const { achievementName, achievementDescription, skills } = req.body;
         const skillArray =  skills.split(',').map(achievement => achievement.trim()); 
        
-        if( req.body.password === password )
+        if( req.body.password === process.env.password )
         {
             const newachievement = await achievementModel.create({
             achievementName: achievementName,

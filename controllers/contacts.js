@@ -1,5 +1,5 @@
 const { contactModel } = require("../models/contact")
-const { password } = require('../config.json');
+// const { password } = require('../config.json');
 
 
 const handleGetApicontact = async (req,res) => 
@@ -49,7 +49,7 @@ const handlePostApicontact = async (req,res) => {
        
         // console.log(mediaData.mediaName , "\n" , mediaData.mediaLink);
 
-        if( req.body.password === password )
+        if( req.body.password === process.env.password )
         {
             await contactModel.create({
             name: contactName,

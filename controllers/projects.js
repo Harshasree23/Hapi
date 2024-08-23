@@ -1,5 +1,5 @@
 const { projectModel } = require("../models/projects.js")
-const { password } = require('../config.json');
+// const { password } = require('../config.json');
 
 
 const handleGetApiproject = async (req,res) => 
@@ -34,7 +34,7 @@ const handlePostApiproject = async (req,res) => {
         const { projectName, projectDescription, usedTechnologies, link ,git ,video } = req.body;
         const techArray =  usedTechnologies.split(',').map(project => project.trim()); 
        
-        if( req.body.password === password )
+        if( req.body.password === process.env.password )
         {
             const newproject = await projectModel.create({
             projectName,
