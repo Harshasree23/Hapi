@@ -6,8 +6,15 @@ const handleGetApiachievement = async (req,res) =>
 {
     try {
         const achievements = await achievementModel.find({}, { _id: 0, __v: 0 });
-        res.header('Content-Type', 'application/json');
-        res.send(achievements );
+        res.on('finish', () => {
+            console.log('Response sent successfully');
+          });
+      
+          achievements.forEach((achievement) => {
+            res.write(JSON.stringify(achievement) + '\n');
+          });
+      
+          res.end();
     }  
     catch (error) {
         console.error(error);

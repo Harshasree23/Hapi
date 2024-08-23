@@ -6,8 +6,15 @@ const handleGetApiSkill = async (req,res) =>
 {
     try {
         const Skills = await skillModel.find({}, { _id: 0, __v: 0 });
-        res.header('Content-Type', 'application/json');
-        res.send(Skills);
+        res.on('finish', () => {
+            console.log('Response sent successfully');
+          });
+      
+          Skills.forEach((skill) => {
+            res.write(JSON.stringify(skill) + '\n');
+          });
+      
+          res.end();
     }  
     catch (error) {
         console.error(error);

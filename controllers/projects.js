@@ -6,8 +6,15 @@ const handleGetApiproject = async (req,res) =>
 {
     try {
         const projects = await projectModel.find({}, { _id: 0, __v: 0 });
-        res.header('Content-Type', 'application/json');
-        res.send(projects);
+        res.on('finish', () => {
+            console.log('Response sent successfully');
+          });
+      
+          projects.forEach((project) => {
+            res.write(JSON.stringify(project) + '\n');
+          });
+      
+          res.end();
     }  
     catch (error) {
         console.error(error);

@@ -6,8 +6,15 @@ const handleGetApiBadge = async (req,res) =>
 {
     try {
         const badges = await badgeModel.find({}, { _id: 0, __v: 0 });
-        res.header('Content-Type', 'application/json');
-        res.send(badges);
+        res.on('finish', () => {
+            console.log('Response sent successfully');
+          });
+      
+          badges.forEach((badge) => {
+            res.write(JSON.stringify(badge) + '\n');
+          });
+      
+          res.end();
     }  
     catch (error) {
         console.error(error);

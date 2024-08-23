@@ -6,8 +6,15 @@ const handleGetApicontact = async (req,res) =>
 {
     try {
         const contacts = await contactModel.find({}, { _id: 0, __v: 0 });
-        res.header('Content-Type', 'application/json');
-        res.send(contacts);
+        res.on('finish', () => {
+            console.log('Response sent successfully');
+          });
+      
+          contacts.forEach((contact) => {
+            res.write(JSON.stringify(contact) + '\n');
+          });
+      
+          res.end();
     }  
     catch (error) {
         console.error(error);
