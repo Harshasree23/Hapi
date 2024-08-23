@@ -6,19 +6,12 @@ const handleGetApiSkill = async (req,res) =>
 {
     try {
         const Skills = await skillModel.find({}, { _id: 0, __v: 0 });
-        res.on('finish', () => {
-            console.log('Response sent successfully');
-          });
-      
-          Skills.forEach((skill) => {
-            res.write(JSON.stringify(skill) + '\n');
-          });
-      
-          res.end();
+        res.header('Content-Type', 'application/json');
+        return res.json(Skills);
     }  
     catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to retrieve Skills' });
+        return res.status(500).json({ error: 'Failed to retrieve Skills' });
     }
 }
 

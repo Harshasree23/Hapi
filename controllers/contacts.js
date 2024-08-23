@@ -6,19 +6,12 @@ const handleGetApicontact = async (req,res) =>
 {
     try {
         const contacts = await contactModel.find({}, { _id: 0, __v: 0 });
-        res.on('finish', () => {
-            console.log('Response sent successfully');
-          });
-      
-          contacts.forEach((contact) => {
-            res.write(JSON.stringify(contact) + '\n');
-          });
-      
-          res.end();
+        res.header('Content-Type', 'application/json');
+        return res.json(contacts);
     }  
     catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to retrieve contacts' });
+        return res.status(500).json({ error: 'Failed to retrieve contacts' });
     }
 }
 

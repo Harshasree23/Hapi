@@ -6,19 +6,12 @@ const handleGetApiachievement = async (req,res) =>
 {
     try {
         const achievements = await achievementModel.find({}, { _id: 0, __v: 0 });
-        res.on('finish', () => {
-            console.log('Response sent successfully');
-          });
-      
-          achievements.forEach((achievement) => {
-            res.write(JSON.stringify(achievement) + '\n');
-          });
-      
-          res.end();
+        res.header('Content-Type', 'application/json');
+        return res.json(achievements );
     }  
     catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to retrieve achievements' });
+        return res.status(500).json({ error: 'Failed to retrieve achievements' });
     }
 }
 

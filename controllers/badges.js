@@ -6,19 +6,12 @@ const handleGetApiBadge = async (req,res) =>
 {
     try {
         const badges = await badgeModel.find({}, { _id: 0, __v: 0 });
-        res.on('finish', () => {
-            console.log('Response sent successfully');
-          });
-      
-          badges.forEach((badge) => {
-            res.write(JSON.stringify(badge) + '\n');
-          });
-      
-          res.end();
+        res.header('Content-Type', 'application/json');
+        return res.json(badges);
     }  
     catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to retrieve badges' });
+        return res.status(500).json({ error: 'Failed to retrieve badges' });
     }
 }
 
