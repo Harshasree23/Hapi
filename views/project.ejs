@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <%- include('./partials/style') %>
+</head>
+<body>
+    <div class="main-heading">
+        <div class="hover" id="title"> Projects </div>
+        <button class="hover" id="add">Add a project</button>
+        <!-- <button class="hover" id="update"> update current ones </button> -->
+    </div>
+    <div id="container">
+        <div class="goto">
+            <a href="/api/projects">Click here to see response of API
+                <span class="material-symbols-outlined">
+                    open_in_new
+                </span>
+            </a>
+            <p id="APILink"></p>
+        </div>
+    </div>
+
+    <script>
+        const text = ` <form method="post" action="/api/projects" >
+
+        <label for="projectName">Project name</label>
+        <input type="text" name="projectName" id="projectName" placeholder="Enter project Name" required>
+
+        <label for="projectDescription">Project Description</label>
+        <input type="text" name="projectDescription" id="projectDescription" placeholder="About the project" required>
+        
+        <label for="usedTechnologies">Used technologies ( seperate by ',' if many) </label>
+        <input type="text" name="usedTechnologies" id="usedTechnologies" placeholder="NodeJs , MongoDB , .." required>
+        
+        <label for="link">Project Url</label>
+        <input type="text" name="link" id="link" placeholder="" required>
+
+        <label for="git">Git</label>
+        <input type="text" name="git" id="git" placeholder="git link" required>
+
+        <label for="video">Video</label>
+        <input type="text" name="video" id="video" placeholder="video link" required>
+
+         <label for='password'>Password ( changes will reflect only if password is correct )</label>
+            <input type='password' name='password' id='password' required>
+
+        <div class="button-container">
+            <button type="submit"> Submit </button>
+            <button type="reset"> Reset </button>
+        </div>
+    </form>`;
+    let url = window.location.href;
+        url = url.replace('user','api');
+        const APILink = document.getElementById('APILink');
+        APILink.innerText = `For API use ${url}`;
+    </script>
+    <%- include('./partials/sameScript.ejs') %>
+</body>
+</html>

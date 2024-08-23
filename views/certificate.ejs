@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates</title>
+    <%- include('./partials/style') %>
+</head>
+<body>
+    <div class="main-heading">
+        <div class="hover" id="title"> Certifications </div>
+        <button class="hover" id="add">Add a certification</button>
+        <!-- <button class="hover" id="update"> update current ones </button> -->
+    </div>
+    <div id="container">
+        <div class="goto">
+            <a href="/api/certifications">Click here to see response of API
+                <span class="material-symbols-outlined">
+                    open_in_new
+                </span>
+            </a>
+            <p id="APILink"></p>
+        </div>
+    </div>
+    
+    <script>
+        const text = `<form method="post" action="/api/certifications" >
+
+        <label for="certificateName"> Certificate name </label>
+        <input type="text" name="certificateName" id="certificateName" placeholder="Enter certificate Name" required>
+
+        <label for="certificateDescription"> Certificate Description </label>
+        <input type="text" name="certificateDescription" id="certificateDescription" placeholder="About the certificate" required>
+        
+        <label for="url"> Url </label>
+        <input type="text" name="url" id="url" placeholder="Enter url" required>
+        
+        <label for="skills"> Skills </label>
+        <input type="text" name="skills" id="skills" placeholder="java, c, .." required>
+
+        <label for="verify"> Verify </label>
+        <input type="text" name="verify" id="verify" placeholder="Verification link" required>
+
+        <label for="company"> Company </label>
+        <input type="text" name="company" id="company" placeholder="Company name" required>
+
+         <label for='password'> Password ( changes will reflect only if password is correct )</label>
+            <input type='password' name='password' id='password' required>
+            
+        <div class="button-container">
+            <button type="submit"> Submit </button>
+            <button type="reset"> Reset </button>
+        </div>
+    </form>`;
+    let url = window.location.href;
+        url = url.replace('user','api');
+        const APILink = document.getElementById('APILink');
+        APILink.innerText = `For API use ${url}`;
+    </script>
+    <%- include('./partials/sameScript.ejs') %>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements</title>
+    <%- include('./partials/style') %>
+</head>
+<body>
+    <div class="main-heading">
+        <div class="hover" id="title"> Achievements </div>
+        <div class="hover" id="add">Add a achievement</div>
+        <!-- <div class="hover" id="update"> update current ones </div> -->
+    </div>
+    <div id="container">
+        <div class="goto">
+            <a href="/api/achievements">Click here to see response of API
+                <span class="material-symbols-outlined">
+                    open_in_new
+                </span>
+            </a>
+            <p id="APILink" ></p>
+        </div>
+    </div>
+    <script>
+        const text = `<form method="post" action="/api/achievements" >
+
+            <label for="achievementName">Achievement name</label>
+            <input type="text" name="achievementName" id="achievementName" placeholder="Enter achievement Name" required>
+
+            <label for="achievementDescription">Achievement Description</label>
+            <input type="text" name="achievementDescription" id="achievementDescription" placeholder="About the achievement" required>
+
+            <label for="skills">Related skills ( if many seperate by , )</label>
+            <input type="text" name="skills" id="skills" placeholder="java , c ..." required>
+
+            <label for='password'>Password ( changes will reflect only if password is correct )</label>
+            <input type='password' name='password' id='password' required>
+
+            <div class="button-container">
+                <button type="submit"> Submit </button>
+                <button type="reset"> Reset </button>
+            </div>
+        </form>`;
+        
+        let url = window.location.href;
+        url = url.replace('user','api');
+        const APILink = document.getElementById('APILink');
+        APILink.innerText = `For API use ${url}`;
+
+    </script>
+    <%- include('./partials/sameScript.ejs') %>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"><style>
+    *{
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        font-family: "Nova Mono", monospace;
+    }
+    .hover{
+        background-color:rgba(217, 255, 0, 0.753);
+        padding: 1rem;
+        border-radius: .3rem;
+    }
+    .goto{
+        padding: 5rem;
+        margin: 5rem auto;
+        width: fit-content;
+        background-color: rgb(231, 252, 156);
+        border-radius: .3rem;
+        display: grid;
+        gap: 3rem;
+    }
+    .goto a{
+        text-decoration: none;
+        color: black;
+        background-color:rgba(217, 255, 0, 0.753);
+        font-size: 1.5rem;
+        width: fit-content;
+        padding: 1rem;
+        border-radius: .2rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .goto a:hover,
+    .hover:hover{
+        background-color: rgb(251, 255, 0);
+    }
+    .main-heading{
+        min-height: 15vh;
+        padding: 1rem;
+        font-size: 1rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    form{
+        width: fit-content;
+        background-color: rgb(231, 252, 156);
+        display: grid;
+        padding: 5rem;
+        margin: 2rem auto;
+        font-size: 1rem;
+    }
+    input{
+        padding: .4rem;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    label{
+        font-size: 1rem;
+        padding: .3rem;
+    }
+    button{
+        padding: .5rem;
+        border: none;
+        border-radius: .2rem;
+    }
+    button:hover{
+        background-color: rgb(251, 255, 0);
+    }
+    form button{
+        margin: 0rem auto;
+        width: fit-content;
+    }
+    @media (max-width:850px)
+    {
+        form{
+            padding: 2rem;
+        }
+        .goto{
+            width: 95%;
+            padding: 1rem;
+        }
+        .goto a{
+            font-size: 1rem;
+        }
+        #APILink{
+            width: 80vw;
+            word-wrap: break-word; 
+            white-space: pre-wrap;
+        }
+    }
+</style>

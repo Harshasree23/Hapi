@@ -1,0 +1,22 @@
+<script>
+    const container = document.getElementById('container');
+    const add = document.getElementById('add');
+    const title = document.getElementById('title');
+
+
+    const preText = container.innerHTML;
+
+    add.addEventListener('click', () => {
+        container.innerHTML='';
+        container.innerHTML = text;
+    });
+
+    title.addEventListener('click', () =>{
+        container.innerHTML='';
+        container.innerHTML=preText;
+        let url = window.location.href;
+        url = url.replace('user','api');
+        const APILink = document.getElementById('APILink');
+        APILink.innerText = `For API use ${url}`;
+    });
+</script>

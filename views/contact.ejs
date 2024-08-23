@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <%- include('./partials/style') %>
+</head>
+<body>
+    <div class="main-heading">
+        <div class="hover" id="title"> Contact Info </div>
+        <button class="hover" id="add">Add a Contact Info</button>
+        <!-- <button class="hover" id="update"> update current ones </button> -->
+    </div>
+    <div id="container">
+        <div class="goto">
+            <a href="/api/contacts">Click here to see response of API
+                <span class="material-symbols-outlined">
+                    open_in_new
+                </span>
+            </a>
+            <p id="APILink"></p>
+        </div>
+    </div>
+    
+    <script> 
+
+        const text=`<form   id="mediaForm" action="/api/contacts" method="POST">
+
+        <label for="contactName"> Contact name </label>
+        <input type="text" name="contactName" id="contactName" placeholder="Enter contact Name" required>
+
+        <label for="contactDescription"> Contact Description </label>
+        <input type="text" name="contactDescription" id="contactDescription" placeholder="About the contact" required>
+        
+        <div id="media-container">
+            <button id="addMedia"> Add </button>
+            <label for="mediaName"> Media Name </label>
+            <input type="text" name="mediaName" id="mediaName" placeholder="Enter media Name" required>
+
+            <label for="mediaLink"> Media Link </label>
+            <input type="text" name="mediaLink" id="mediaLink" placeholder="Enter media Link" required>
+        </div>
+        
+         <label for='password'> Password ( changes will reflect only if password is correct )</label>
+            <input type='password' name='password' id='password' required>
+
+        <div class="button-container">
+            <button type="submit"> Submit </button>
+            <button type="reset"> Reset </button>
+        </div>
+    </form>`;
+
+        
+
+
+        function setEventForAdd()
+        {
+            const mediaContainer = document.getElementById('media-container');
+            const addMediaButton = document.getElementById('addMedia');
+            const mediaForm = document.getElementById('mediaForm');
+
+            addMediaButton.addEventListener('click', () => {
+            const mediaGroup = document.createElement('div');
+            mediaGroup.className = 'media-group';
+
+            const mediaNameInput = document.createElement('input');
+            mediaNameInput.type = 'text';
+            mediaNameInput.name = 'mediaName'; // Use array notation for multiple inputs
+            mediaNameInput.placeholder = 'Enter media Name';
+            mediaNameInput.required = true;
+
+            const mediaLinkInput = document.createElement('input');
+            mediaLinkInput.type = 'text';
+            mediaLinkInput.name = 'mediaLink'; // Use array notation for multiple inputs
+            mediaLinkInput.placeholder = 'Enter media Link';
+            mediaLinkInput.required = true;
+
+            mediaGroup.appendChild(mediaNameInput);
+            mediaGroup.appendChild(mediaLinkInput);
+            mediaContainer.appendChild(mediaGroup);
+            });
+        }
+
+        function setEventForSubmit()
+        {
+            const mediaContainer = document.getElementById('media-container');
+            const addMediaButton = document.getElementById('addMedia');
+            const mediaForm = document.getElementById('mediaForm');
+
+
+            mediaForm.addEventListener('submit', async (event) => {
+            const formData = new FormData(mediaForm);
+            const mediaData = {};
+
+            for (const [key, value] of formData.entries()) {
+                if (key.includes('[]')) {
+                    const fieldName = key.replace('[]', '');
+                    mediaData[fieldName].push(value);
+                } else {
+                    mediaData[key] = mediaData[key] || []; 
+                    mediaData[key].push(value);
+                }
+            }
+
+            console.log(mediaData);
+
+            fetch('/api/contacts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(mediaData)
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Form data submitted successfully:', data);
+            // Handle success, e.g., show a success message or redirect
+            // You can redirect using window.location.href = '/success-page'; 
+            })
+            .catch(error => {
+            console.error('Error submitting form data:', error);
+            // Handle errors, e.g., show an error message
+            });
+            });
+        }
+
+        const container = document.getElementById('container');
+        const add = document.getElementById('add');
+        const title = document.getElementById('title');
+
+        let url = window.location.href;
+        url = url.replace('user','api');
+        const APILink = document.getElementById('APILink');
+        APILink.innerText = `For API use ${url}`;
+        const preText = container.innerHTML;
+
+        add.addEventListener('click', async () => {
+            container.innerHTML='';
+            container.innerHTML = text;
+            await setEventForAdd();
+            await setEventForSubmit();
+        });
+
+        title.addEventListener('click', () =>{
+            container.innerHTML='';
+            container.innerHTML=preText;
+            let url = window.location.href;
+            url = url.replace('user','api');
+            const APILink = document.getElementById('APILink');
+            APILink.innerText = `For API use ${url}`;
+        });
+        
+    </script>
+</body>
+</html>

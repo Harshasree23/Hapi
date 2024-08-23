@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <%- include('./partials/style') %>
+</head>
+<body>
+    <div class="main-heading">
+        <div class="hover" id="title"> Skills </div>
+        <button class="hover" id="add">Add a skill</button>
+        <!-- <button class="hover" id="update"> update current ones </button> -->
+    </div>
+    <div id="container">
+        <div class="goto">
+            <a href="/api/skills">Click here to see response of API
+                <span class="material-symbols-outlined">
+                    open_in_new
+                </span>
+            </a>
+            <p id="APILink"></p>
+        </div>
+    </div>
+
+    
+    <script>
+        const text = ` <form method="post" action="/api/skills" >
+
+        <label for="SkillName">Skill name</label>
+        <input type="text" name="SkillName" id="SkillName" placeholder="Enter Skill Name" required>
+
+        <label for="SkillDescription">Skill Description</label>
+        <input type="text" name="SkillDescription" id="SkillDescription" placeholder="About the Skill" required>
+
+        <label for="learnedFrom">Learned from ( if many seperate by , )</label>
+        <input type="text" name="learnedFrom" id="learnedFrom" placeholder="Microsoft" required>
+
+        <label for="projects">Projects ( if many seperate by , )</label>
+        <input type="text" name="projects" id="projects" placeholder="Calculator" required>
+
+        <label for="certifications">Certifications ( if many seperate by , )</label>
+        <input type="text" name="certifications" id="certifications" placeholder="Certifications" required>
+
+             <label for='password'>Password ( changes will reflect only if password is correct )</label>
+            <input type='password' name='password' id='password' required>
+
+        <div class="button-container">
+            <button type="submit"> Submit </button>
+            <button type="reset"> Reset </button>
+        </div>
+    </form>`;
+        let url = window.location.href;
+        url = url.replace('user','api');
+        const APILink = document.getElementById('APILink');
+        APILink.innerText = `For API use ${url}`;
+    </script>
+    <%- include('./partials/sameScript.ejs') %>
+</body>
+</html>
