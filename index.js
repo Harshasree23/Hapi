@@ -4,6 +4,7 @@ const { apiRoute } = require('./routes/api');
 const { userRoute } = require('./routes/user');
 const { makeConnection } = require('./connectToDb.js');
 const portfinder = require('portfinder');
+const cors = require('cors');
 
 // Creating app
 const app = express();
@@ -14,6 +15,7 @@ makeConnection('my_server').then( () => console.log('connected to DB') );
 
 
 // middleWare
+app.use(cors({ origin: "*" }));
 app.set('view engine','ejs');
 app.set('views',path.resolve('./views'));
 app.use(express.urlencoded( { extended : false } ));
