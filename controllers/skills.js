@@ -33,18 +33,12 @@ const handlePostApiSkill = async (req,res) => {
     // getting Skill data from the form
     try{
         const { SkillName, SkillDescription, learnedFrom, projects, certifications } = req.body;
-        const learnedFromArray =  learnedFrom.split(',').map(skill => skill.trim()); 
-        const projectsArray =  projects.split(',').map(skill => skill.trim()); 
-        const certificationsArray =  certifications.split(',').map(skill => skill.trim()); 
        
         if( req.body.password === process.env.password )
         {
             const newSkill = await skillModel.create({
             skillName:SkillName,
             description:SkillDescription,
-            learnedFrom:learnedFromArray,
-            projects:projectsArray,
-            certificates:certificationsArray,
             });
         }
         

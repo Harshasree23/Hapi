@@ -11,15 +11,6 @@ var skillSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    learnedFrom:[{
-        type: String,
-    }],
-    projects:[{
-        type:String,
-    }],
-    certificates:[{
-        type:String,
-    }],
 });
 
 let skillModel = mongoose.model('skills',skillSchema);
