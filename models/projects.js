@@ -25,6 +25,9 @@ var projectSchema = new mongoose.Schema({
     video:{
         type:String,
     },
+    images:{
+         type: [String],
+    },
 });
 
 let projectModel = mongoose.model('projects',projectSchema);

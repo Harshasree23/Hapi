@@ -2,6 +2,7 @@ const { projectModel } = require("../models/projects.js")
 // const { password } = require('../config.json');
 
 
+
 const handleGetApiproject = async (req,res) => 
 {
     try {
@@ -28,30 +29,38 @@ const handleGetproject = async (req,res) => {
 }
 
 
-const handlePostApiproject = async (req,res) => {
-    
-    // getting project data from the form
-    try{
-        const { projectName, projectDescription, usedTechnologies, link ,git ,video } = req.body;
-        const techArray =  usedTechnologies.split(',').map(project => project.trim()); 
-       
-        if( req.body.password === process.env.password )
-        {
-            const newproject = await projectModel.create({
+const handlePostApiproject = async (req, res) => {
+    try {
+        // Extract project data from the request
+        const { projectName, projectDescription, usedTechnologies, link, git, video, password } = req.body;
+        const techArray = usedTechnologies.split(',').map((tech) => tech.trim());
+
+        // Validate password
+        if (password !== process.env.password) {
+            return res.status(403).json({ error: "Unauthorized access. Incorrect password." });
+        }
+
+        // Handle image file uploads
+        const images = req.files.map((file) => `uploads/projects/${file.filename}`);
+
+        // Create a new project document
+        const newProject = await projectModel.create({
             projectName,
             description: projectDescription,
             usedTechnologies: techArray,
             link,
             git,
             video,
-            });
-        }
+            images, // Save image paths in the database
+        });
+
+        // Redirect or respond with success
         return res.redirect('/api/projects');
+    } catch (err) {
+        return res.status(500).json({ error: "Error in processing project data", details: err.message });
     }
-    catch(err){
-        return res.json({ error:"Error in getting project data", err: err });   
-    }
-}
+};
+
 
 module.exports = {
     handleGetApiproject,
