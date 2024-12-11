@@ -44,7 +44,7 @@ userRoute.get('/',(req,res) => {return res.render('home');})
         .get('/badges' , handleGetBadge )
         .get('/skills' , handleGetSkill )
         .get('/certifications' , handleGetcertificate )
-        .get('/projects' , upload.array('images', 5) , handleGetproject )
+        .get('/projects' , handleGetproject )
         .get('/contacts' , handleGetcontact )
         .use((req, res, next) => {
             // Handle route not found
