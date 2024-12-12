@@ -21,7 +21,7 @@ app.set('views',path.resolve('./views'));
 app.use(express.urlencoded( { extended : false } ));
 app.use(express.json());
 app.use("/public", express.static('public')); 
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 // Routes
