@@ -51,7 +51,7 @@ const handlePostApiproject = async (req, res) => {
             link,
             git,
             video,
-            imageUrls, // Save image paths in the database
+            images:imageUrls, // Save image paths in the database
         });
 
         // Redirect or respond with success
