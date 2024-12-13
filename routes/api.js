@@ -6,23 +6,29 @@ const { handleGetApicertificate, handlePostApicertificate } = require('../contro
 const { handleGetApicontact, handlePostApicontact } = require('../controllers/contacts');
 const { handleGetApiachievement, handlePostApiachievement } = require('../controllers/achievements');
 
-
 const multer = require('multer');
-const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
 
+// Configure Cloudinary
+cloudinary.config({
+    cloud_name: process.env.cloud_name,
+    api_key: process.env.cloud_api,
+    api_secret: process.env.cloud_api_secret,
+});
 
-// Configure storage for uploaded files
-const storage = multer.diskStorage({
-    destination: './uploads/projects',
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`);
+// Configure Multer Storage with Cloudinary
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'projects', // Folder name in Cloudinary
+        allowed_formats: ['jpeg', 'jpg', 'png'], // Allowed file types
     },
 });
 
 // Multer instance
 const upload = multer({
     storage: storage,
-    // limits: { fileSize: 5 * 1024 * 1024 }, // 5MB max size per file
     fileFilter: (req, file, cb) => {
         const fileTypes = /jpeg|jpg|png/;
         const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
@@ -38,24 +44,28 @@ const upload = multer({
 
 const apiRoute = express.Router();
 
-
-apiRoute.get('/achievements' , handleGetApiachievement  )
-        .get('/badges' , handleGetApiBadge )
-        .get('/skills' , handleGetApiSkill )
-        .get('/certifications' , handleGetApicertificate )
-        .get('/projects' , handleGetApiproject )
-        .get('/contacts' , handleGetApicontact )
-        .post('/achievements', handlePostApiachievement)
-        .post('/contacts', handlePostApicontact )
-        .post('/certifications', handlePostApicertificate)
-        .post('/badges' , handlePostApiBadge)
-        .post('/skills', handlePostApiSkill )
-        .post('/projects', upload.array('images', 5) , handlePostApiproject)
-        .use((req, res, next) => {
-            // Handle route not found
-            res.status(404).json({ error: 'Route not found' });
-          });
+apiRoute
+    .get('/achievements', handleGetApiachievement)
+    .get('/badges', handleGetApiBadge)
+    .get('/skills', handleGetApiSkill)
+    .get('/certifications', handleGetApicertificate)
+    .get('/projects', handleGetApiproject)
+    .get('/contacts', handleGetApicontact)
+    .post('/achievements', handlePostApiachievement)
+    .post('/contacts', handlePostApicontact)
+    .post('/certifications', handlePostApicertificate)
+    .post('/badges', handlePostApiBadge)
+    .post('/skills', handlePostApiSkill)
+    .post(
+        '/projects',
+        upload.array('images', 5), // Allow up to 5 images
+        handlePostApiproject
+    )
+    .use((req, res, next) => {
+        // Handle route not found
+        res.status(404).json({ error: 'Route not found' });
+    });
 
 module.exports = {
     apiRoute,
-}
+};

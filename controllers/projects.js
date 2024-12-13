@@ -41,7 +41,7 @@ const handlePostApiproject = async (req, res) => {
         }
 
         // Handle image file uploads
-        const images = req.files.map((file) => `uploads/projects/${file.filename}`);
+        const imageUrls = req.files.map((file) => file.path);
 
         // Create a new project document
         const newProject = await projectModel.create({
@@ -51,7 +51,7 @@ const handlePostApiproject = async (req, res) => {
             link,
             git,
             video,
-            images, // Save image paths in the database
+            imageUrls, // Save image paths in the database
         });
 
         // Redirect or respond with success
