@@ -32,9 +32,10 @@ const handlePostApiBadge = async (req,res) => {
     
     // getting badge data from the form
     try{
-        const { badgeName, badgeDescription, badgeUrl, skills, verify, company } = req.body;
+        const { badgeName, badgeDescription, skills, verify, company } = req.body;
         skillsArray =  skills.split(',').map(skill => skill.trim()); // Split and trim skills
         
+        const badgeUrl = req.file ? req.file.path : null;
         if( req.body.password === process.env.password )
         {
             const newBadge = await badgeModel.create({

@@ -45,6 +45,31 @@ const upload = multer({
     },
 });
 
+
+const badgeStorage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'badges', // Folder name in Cloudinary
+        allowed_formats: ['jpeg', 'jpg', 'png'], // Allowed file types
+    },
+});
+
+// Multer instance for badges
+const uploadBadge = multer({
+    storage: badgeStorage,
+    fileFilter: (req, file, cb) => {
+        const fileTypes = /jpeg|jpg|png/;
+        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = fileTypes.test(file.mimetype);
+
+        if (mimetype && extname) {
+            cb(null, true);
+        } else {
+            cb(new Error('Only images (jpeg, jpg, png) are allowed!'));
+        }
+    },
+});
+
 const apiRoute = express.Router();
 
 apiRoute
@@ -57,7 +82,9 @@ apiRoute
     .post('/achievements', handlePostApiachievement)
     .post('/contacts', handlePostApicontact)
     .post('/certifications', handlePostApicertificate)
-    .post('/badges', handlePostApiBadge)
+    .post('/badges',
+        uploadBadge.single('badgeImage'),
+        handlePostApiBadge)
     .post('/skills', handlePostApiSkill)
     .post(
         '/projects',

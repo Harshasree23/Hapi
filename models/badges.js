@@ -17,7 +17,7 @@ var badgeSchema = new mongoose.Schema({
     },
     skills:[{
         type:String,
-}],
+    }],
     verify:{
         type:String,
         required:true,

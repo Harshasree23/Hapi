@@ -23,7 +23,7 @@
         </div>
     </div>
     <script>
-        const text = `<form method="post" action="/api/badges" >
+        const text = `<form method="post" action="/api/badges" enctype="multipart/form-data">
 
         <label for="badgeName">Badge name</label>
         <input type="text" name="badgeName" id="badgeName" placeholder="Enter Badge Name" required>
@@ -31,8 +31,8 @@
         <label for="badgeDescription">Badge Description</label>
         <input type="text" name="badgeDescription" id="badgeDescription" placeholder="About the badge" required>
 
-        <label for="badgeUrl">Badge Url</label>
-        <input type="text" name="badgeUrl" id="badgeUrl" placeholder="" required>
+        <label for="badgeUrl">Upload Images </label>
+        <input type="file" name="badgeUrl" id="badgeUrl"  accept="image/*" required>
 
         <label for="skills">Skills ( enter with commas if many )</label>
         <input type="text" name="skills" id="skills" placeholder="java, c ..." required>
