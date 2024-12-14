@@ -83,7 +83,7 @@ apiRoute
     .post('/contacts', handlePostApicontact)
     .post('/certifications', handlePostApicertificate)
     .post('/badges',
-        uploadBadge.single('badgeImage'),
+        uploadBadge.single('badgeUrl'),
         handlePostApiBadge)
     .post('/skills', handlePostApiSkill)
     .post(
