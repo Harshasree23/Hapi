@@ -5,7 +5,7 @@ const { achievementModel } = require("../models/achievements.js")
 const handleGetApiachievement = async (req,res) => 
 {
     try {
-        const achievements = await achievementModel.find({}, { _id: 0, __v: 0 });
+        const achievements = await achievementModel.find({});
         res.header('Content-Type', 'application/json');
         return res.json(achievements );
     }  
