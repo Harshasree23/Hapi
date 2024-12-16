@@ -114,6 +114,16 @@
     </style>
 </head>
 <body>
+
+    <!-- Login Section -->
+    <div id="login-container">
+        <h1>Access Restricted</h1>
+        <p>Please enter the password to access this page:</p>
+        <input type="password" id="password-input" placeholder="Enter password" required />
+        <button onclick="verifyPassword()">Submit</button>
+        <p id="error-message" style="color: red; display: none;">Invalid password. Please try again.</p>
+    </div>
+
     <div id="edit-container">
         <h1>Edit Achievements</h1>
         <div id="achievements-list"></div>
@@ -135,6 +145,28 @@
         </div>
     </div>
     <script>
+
+        // Password verification function
+        function verifyPassword() {
+            const password = document.getElementById('password-input').value;
+            fetch('/api/verify-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        document.getElementById('login-container').style.display = 'none';
+                        document.getElementById('edit-container').style.display = 'block';
+                        fetchAchievements();
+                    } else {
+                        document.getElementById('error-message').style.display = 'block';
+                    }
+                })
+                .catch((err) => console.error('Error:', err));
+        }
+
         // Fetch achievements and display them
         fetch('/api/achievements')
             .then((response) => response.json())
