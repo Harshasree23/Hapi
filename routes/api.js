@@ -93,6 +93,14 @@ apiRoute
         upload.array('images', 5), // Allow up to 5 images
         handlePostApiproject
     )
+    .post('/verify-password', (req, res) => {
+        const { password } = req.body;
+        if (password === process.env.password) {
+            res.json({ success: true });
+        } else {
+            res.json({ success: false });
+        }
+    })
     .use((req, res, next) => {
         // Handle route not found
         res.status(404).json({ error: 'Route not found' });
