@@ -12,6 +12,7 @@ const userRoute = express.Router();
 
 userRoute.get('/',(req,res) => {return res.render('home');})
         .get('/achievements' , handleGetachievement  )
+        .get('/editachievements', (req, res) => { res.render('editachievements'); })        
         .get('/badges' , handleGetBadge )
         .get('/skills' , handleGetSkill )
         .get('/certifications' , handleGetcertificate )

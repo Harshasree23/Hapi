@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Achievements</title>
+    <%- include('./partials/style') %>
+</head>
+<body>
+    <div id="edit-container">
+        <h1>Edit Achievements</h1>
+        <div id="achievements-list">
+        </div>
+    </div>
+    <%- include('./partials/sameScript.ejs') %>
+    <script>
+        fetch('/api/achievements')
+            .then((response) => response.json())
+            .then((data) => {
+                const list = document.getElementById('achievements-list');
+                data.forEach((achievement) => {
+                    const achievementDiv = document.createElement('div');
+                    achievementDiv.innerHTML = `
+                        <div class="achievement">
+                            <p><strong>${achievement.name}</strong>: ${achievement.description}</p>
+                            <p>Skills: ${achievement.skills.join(', ')}</p>
+                            <button onclick="editAchievement(${achievement.id})">Edit</button>
+                            <button onclick="deleteAchievement(${achievement.id})">Delete</button>
+                        </div>
+                    `;
+                    list.appendChild(achievementDiv);
+                });
+            });
+
+        function editAchievement(id) {
+            const name = prompt('Enter new name:');
+            const description = prompt('Enter new description:');
+            const skills = prompt('Enter new skills (comma-separated):');
+
+            fetch(`/api/achievements/${id}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, description, skills }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data.message);
+                    location.reload();
+                });
+        }
+
+        function deleteAchievement(id) {
+            fetch(`/api/achievements/${id}`, {
+                method: 'DELETE',
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data.message);
+                    location.reload();
+                });
+        }
+    </script>
+</body>
+</html>

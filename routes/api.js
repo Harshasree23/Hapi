@@ -4,7 +4,7 @@ const { handleGetApiSkill, handlePostApiSkill } = require('../controllers/skills
 const { handleGetApiproject, handlePostApiproject } = require('../controllers/projects');
 const { handleGetApicertificate, handlePostApicertificate } = require('../controllers/certifications');
 const { handleGetApicontact, handlePostApicontact } = require('../controllers/contacts');
-const { handleGetApiachievement, handlePostApiachievement } = require('../controllers/achievements');
+const { handleGetApiachievement, handlePostApiachievement, updateAchievement ,deleteAchievement } = require('../controllers/achievements');
 
 
 
@@ -80,6 +80,8 @@ apiRoute
     .get('/projects', handleGetApiproject)
     .get('/contacts', handleGetApicontact)
     .post('/achievements', handlePostApiachievement)
+    .post('/achievements/:id', updateAchievement )
+    .delete('/achievements/:id', deleteAchievement )
     .post('/contacts', handlePostApicontact)
     .post('/certifications', handlePostApicertificate)
     .post('/badges',
