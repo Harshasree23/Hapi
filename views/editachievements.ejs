@@ -329,9 +329,17 @@
     </div>
     <script>
 
-        // Verify pass
-        function verifyPassword() {
-            const password = document.getElementById('password-input').value;
+         // Check for stored password on page load
+         window.onload = function () {
+            const storedPassword = sessionStorage.getItem('password');
+            if (storedPassword) {
+                verifyPassword(storedPassword, true);
+            }
+        };
+
+        function verifyPassword(enteredPassword = null, isStored = false) {
+            const password = enteredPassword || document.getElementById('password-input').value;
+
             fetch('/api/verify-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -340,9 +348,13 @@
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.success) {
+                        // Save password in sessionStorage if not from stored password
+                        if (!isStored) {
+                            sessionStorage.setItem('password', password);
+                        }
                         document.getElementById('login-container').style.display = 'none';
                         document.getElementById('edit-container').style.display = 'block';
-                        fetchAchievements();
+                        fetchbadges();
                     } else {
                         document.getElementById('error-message').style.display = 'block';
                     }
@@ -382,22 +394,26 @@
 
         // Submit the edit form
         function submitEditForm() {
-            const id = document.getElementById('achievement-id').value;
-            const name = document.getElementById('achievement-name').value;
-            const description = document.getElementById('achievement-description').value;
-            const skills = document.getElementById('achievement-skills').value;
+            if (confirm("Are you sure you want to save changes?")) {
+                const id = document.getElementById('achievement-id').value;
+                const name = document.getElementById('achievement-name').value;
+                const description = document.getElementById('achievement-description').value;
+                const skills = document.getElementById('achievement-skills').value;
 
-            fetch(`/api/achievements/${id}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, description, skills }),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    alert(data.message);
-                    location.reload();
+                fetch(`/api/achievements/${id}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, description, skills }),
                 })
-                .catch((err) => console.error('Error:', err));
+                    .then((response) => response.json())
+                    .then((data) => {
+                        alert(data.message);
+                        location.reload();
+                    })
+                    .catch((err) => console.error('Error:', err));
+            } else {
+                alert("Changes were not saved.");
+            }
         }
 
         // Cancel editing and hide the form
@@ -407,15 +423,19 @@
 
         // Delete an achievement
         function deleteAchievement(id) {
-            fetch(`/api/achievements/${id}`, {
-                method: 'DELETE',
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    alert(data.message);
-                    location.reload();
+            if (confirm("Are you sure you want to delete this achievement? This action cannot be undone.")) {
+                fetch(`/api/achievements/${id}`, {
+                    method: 'DELETE',
                 })
-                .catch((err) => console.error('Error:', err));
+                    .then((response) => response.json())
+                    .then((data) => {
+                        alert(data.message);
+                        location.reload();
+                    })
+                    .catch((err) => console.error('Error:', err));
+            } else {
+                alert("Deletion was canceled.");
+            }
         }
     </script>
 </body>
