@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Badges</title>
+    <style>
+       body {
+            font-family: "Nova Mono", monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Login Section Styles */
+        #login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        #login-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        #login-container input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #login-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        #login-container button:hover {
+            background-color: #218838;
+        }
+
+        #login-container p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Edit Section Styles */
+        #edit-container {
+            display: none; /* Hidden by default */
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        #badges-list {
+            margin: 20px 0;
+        }
+
+        .badge {
+            background: #fafafa;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .badge p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .badge button {
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .badge button:hover {
+            background-color: #0056b3;
+        } 
+        
+        body {
+            font-family: "Nova Mono", monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Login Section Styles */
+        #login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        #login-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        #login-container input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #login-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        #login-container button:hover {
+            background-color: #218838;
+        }
+
+        #login-container p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Edit Section Styles */
+        #edit-container {
+            display: none; /* Hidden by default */
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        #badges-list {
+            margin: 20px 0;
+        }
+
+        .badge {
+            background: #fafafa;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .badge p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .badge button {
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .badge button:hover {
+            background-color: #0056b3;
+        }
+        /* Edit Section Styles */
+        #edit-container {
+            display: none; /* Hidden by default */
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        #badges-list {
+            margin: 20px 0;
+        }
+
+        .badge {
+            background: #fafafa;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .badge p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .badge button {
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .badge button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Edit Form Container */
+        #edit-form-container {
+            margin-top: 30px;
+        }
+
+        #edit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #edit-form input, #edit-form textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #edit-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        #edit-form button:hover {
+            background-color: #218838;
+        }
+
+        #edit-form textarea {
+            resize: vertical;
+        }
+
+        #edit-form label {
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Login Section -->
+    <div id="login-container">
+        <h1>Access Restricted</h1>
+        <p>Please enter the password to access this page:</p>
+        <input type="password" id="password-input" placeholder="Enter password" required />
+        <button onclick="verifyPassword()">Submit</button>
+        <p id="error-message" style="color: red; display: none;">Invalid password. Please try again.</p>
+    </div>
+
+    <div id="edit-container">
+        <h1>Edit badges</h1>
+        <div id="badges-list"></div>
+        <div id="edit-form-container" style="display: none;">
+            <h2>Edit badge</h2>
+            <form id="edit-form">
+                <input type="hidden" id="badge-id" />
+                <label for="badge-name">Name:</label>
+                <input type="text" id="badge-name" required />
+                <label for="badge-description">Description:</label>
+                <textarea id="badge-description" rows="5" required></textarea>
+                <label for="badge-skills">Skills (comma-separated):</label>
+                <input type="text" id="badge-skills" required />
+                <label for="badge-url">Url:</label>
+                <input type="text" id="badge-url" required />
+                <label for="badge-verify">Verify:</label>
+                <input type="text" id="badge-verify" required />
+                <label for="badge-company">Company:</label>
+                <input type="text" id="badge-company" required />
+                <div style="display: flex; justify-content: space-between;">
+                    <button type="button" onclick="submitEditForm()">Save</button>
+                    <button type="button" style="background-color: red;" onclick="cancelEdit()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+
+        // Verify pass
+        function verifyPassword() {
+            const password = document.getElementById('password-input').value;
+            fetch('/api/verify-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        document.getElementById('login-container').style.display = 'none';
+                        document.getElementById('edit-container').style.display = 'block';
+                        fetchbadges();
+                    } else {
+                        document.getElementById('error-message').style.display = 'block';
+                    }
+                })
+                .catch((err) => console.error('Error:', err));
+        }
+
+
+        // Fetch badges and display them
+        fetch('/api/badges')
+            .then((response) => response.json())
+            .then((data) => {
+                const list = document.getElementById('badges-list');
+                list.innerHTML = '';
+                data.forEach((badge) => {
+                    const badgeDiv = document.createElement('div');
+                    badgeDiv.innerHTML = `
+                        <div class="badge">
+                            <p><strong>${badge.badgeName}</strong>: ${badge.description}</p>
+                            <p>Skills: ${badge.skills.join(', ')}</p>
+                            <p>URL : ${badge.url}</p>
+                            <p>Verify : ${badge.verify}</p>
+                            <p>Company : ${badge.company}</p>
+                            <button style="background-color:#007BFF" onclick="showEditForm('${badge._id}', '${badge.badgeName}', '${badge.description}', '${badge.skills.join(', ')}' , '${badge.badgeUrl}' , '${badge.verify}' ,' ${badge.company} ' )">Edit</button>
+                            <button style="background-color:#007BFF"  onclick="deletebadge('${badge._id}')">Delete</button>
+                        </div>
+                    `;
+                    list.appendChild(badgeDiv);
+                });
+            });
+
+        // Show the edit form and populate it with existing data
+        function showEditForm(id, name, description, skills, url , verify , company) {
+            document.getElementById('edit-form-container').style.display = 'block';
+            document.getElementById('badge-id').value = id;
+            document.getElementById('badge-name').value = name;
+            document.getElementById('badge-description').value = description;
+            document.getElementById('badge-skills').value = skills;
+            document.getElementById('badge-url').value = url;
+            document.getElementById('badge-verify').value = verify;
+            document.getElementById('badge-company').value = company;
+        }
+
+        // Submit the edit form
+        function submitEditForm() {
+            const id = document.getElementById('badge-id').value;
+            const name = document.getElementById('badge-name').value;
+            const description = document.getElementById('badge-description').value;
+            const skills = document.getElementById('badge-skills').value;
+
+            fetch(`/api/badges/${id}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, description, skills }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data.message);
+                    location.reload();
+                })
+                .catch((err) => console.error('Error:', err));
+        }
+
+        // Cancel editing and hide the form
+        function cancelEdit() {
+            document.getElementById('edit-form-container').style.display = 'none';
+        }
+
+        // Delete an badge
+        function deletebadge(id) {
+            fetch(`/api/badges/${id}`, {
+                method: 'DELETE',
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data.message);
+                    location.reload();
+                })
+                .catch((err) => console.error('Error:', err));
+        }
+    </script>
+</body>
+</html>
