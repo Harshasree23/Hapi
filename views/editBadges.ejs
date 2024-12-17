@@ -318,8 +318,8 @@
                 <input type="hidden" id="badge-id" />
                 <label for="badge-name">Name:</label>
                 <input type="text" id="badge-name" required />
-                <label for="badge-description">Description:</label>
-                <textarea id="badge-description" rows="5" required></textarea>
+                <label for="badge-badgeDescription">badgeDescription:</label>
+                <textarea id="badge-badgeDescription" rows="5" required></textarea>
                 <label for="badge-skills">Skills (comma-separated):</label>
                 <input type="text" id="badge-skills" required />
                 <label for="badge-url">Url:</label>
@@ -369,12 +369,12 @@
                     const badgeDiv = document.createElement('div');
                     badgeDiv.innerHTML = `
                         <div class="badge">
-                            <p><strong>${badge.badgeName}</strong>: ${badge.description}</p>
+                            <p><strong>${badge.badgeName}</strong>: ${badge.badgeDescription}</p>
                             <p>Skills: ${badge.skills.join(', ')}</p>
                             <p>URL : ${badge.url}</p>
                             <p>Verify : ${badge.verify}</p>
                             <p>Company : ${badge.company}</p>
-                            <button style="background-color:#007BFF" onclick="showEditForm('${badge._id}', '${badge.badgeName}', '${badge.description}', '${badge.skills.join(', ')}' , '${badge.badgeUrl}' , '${badge.verify}' ,' ${badge.company} ' )">Edit</button>
+                            <button style="background-color:#007BFF" onclick="showEditForm('${badge._id}', '${badge.badgeName}', '${badge.badgeDescription}', '${badge.skills.join(', ')}' , '${badge.badgeUrl}' , '${badge.verify}' ,' ${badge.company} ' )">Edit</button>
                             <button style="background-color:#007BFF"  onclick="deletebadge('${badge._id}')">Delete</button>
                         </div>
                     `;
@@ -383,11 +383,11 @@
             });
 
         // Show the edit form and populate it with existing data
-        function showEditForm(id, name, description, skills, url , verify , company) {
+        function showEditForm(id, name, badgeDescription, skills, url , verify , company) {
             document.getElementById('edit-form-container').style.display = 'block';
             document.getElementById('badge-id').value = id;
             document.getElementById('badge-name').value = name;
-            document.getElementById('badge-description').value = description;
+            document.getElementById('badge-badgeDescription').value = badgeDescription;
             document.getElementById('badge-skills').value = skills;
             document.getElementById('badge-url').value = url;
             document.getElementById('badge-verify').value = verify;
@@ -398,13 +398,13 @@
         function submitEditForm() {
             const id = document.getElementById('badge-id').value;
             const name = document.getElementById('badge-name').value;
-            const description = document.getElementById('badge-description').value;
+            const badgeDescription = document.getElementById('badge-badgeDescription').value;
             const skills = document.getElementById('badge-skills').value;
 
             fetch(`/api/badges/${id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, description, skills }),
+                body: JSON.stringify({ name, badgeDescription, skills }),
             })
                 .then((response) => response.json())
                 .then((data) => {
