@@ -54,11 +54,11 @@ const handlePostApiachievement = async (req,res) => {
 const updateAchievement = async (req, res) => {
     try {
         const { id } = req.params; 
-        const { achievementName, description, skills } = req.body; 
+        const { name, description, skills } = req.body; 
         const skillArray = skills.split(',').map(skill => skill.trim()); 
         const updatedAchievement = await achievementModel.findByIdAndUpdate( id, 
             { 
-                achievementName, 
+                achievementName:name, 
                 description, 
                 skills: skillArray 
             }, 

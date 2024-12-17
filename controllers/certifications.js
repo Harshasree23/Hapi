@@ -4,7 +4,7 @@ const { certificateModel } = require("../models/certifications.js")
 const handleGetApicertificate = async (req,res) => 
 {
     try {
-        const certificates = await certificateModel.find({}, { _id: 0, __v: 0 });
+        const certificates = await certificateModel.find({});
         res.header('Content-Type', 'application/json');
         return res.json(certificates);
     }  
