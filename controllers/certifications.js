@@ -56,13 +56,13 @@ const handlePostApicertificate = async (req,res) => {
 const editCertificate = async (req, res) => {
     try {
         const { id } = req.params;
-        const { certificateName, certificateDescription,url, skills, verify, company } = req.body;
+        const { name, certificateDescription,url, skills, verify, company } = req.body;
         const skillsArray = skills.split(',').map(skill => skill.trim()); // Split and trim skills
 
         const updatedcertificate = await certificateModel.findByIdAndUpdate(
             id,
             {
-                certificateName,
+                certificateName: name,
                 description: certificateDescription,
                 url,
                 skills: skillsArray,
