@@ -2,7 +2,7 @@ const express = require('express');
 const { handleGetApiBadge, handlePostApiBadge, editBadge, deleteBadge } = require('../controllers/badges');
 const { handleGetApiSkill, handlePostApiSkill } = require('../controllers/skills');
 const { handleGetApiproject, handlePostApiproject } = require('../controllers/projects');
-const { handleGetApicertificate, handlePostApicertificate } = require('../controllers/certifications');
+const { handleGetApicertificate, handlePostApicertificate, editCertificate, deleteCertificate } = require('../controllers/certifications');
 const { handleGetApicontact, handlePostApicontact } = require('../controllers/contacts');
 const { handleGetApiachievement, handlePostApiachievement, updateAchievement ,deleteAchievement } = require('../controllers/achievements');
 
@@ -84,6 +84,8 @@ apiRoute
     .delete('/achievements/:id', deleteAchievement )
     .post('/contacts', handlePostApicontact)
     .post('/certifications', handlePostApicertificate)
+    .post('/certifications/:id',editCertificate)
+    .delete('/certifications/:id',deleteCertificate)
     .post('/badges', uploadBadge.single('badgeUrl'), handlePostApiBadge)
     .post('/badges/:id' , editBadge)
     .delete('/badges/:id', deleteBadge)

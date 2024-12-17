@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Badges</title>
+    <title>Edit Certification</title>
     <style>
        body {
             font-family: "Nova Mono", monospace;
@@ -75,11 +75,11 @@
             color: #444;
         }
 
-        #badges-list {
+        #Certification-list {
             margin: 20px 0;
         }
 
-        .badge {
+        .certificate {
             background: #fafafa;
             padding: 15px;
             margin: 10px 0;
@@ -87,12 +87,12 @@
             border-radius: 5px;
         }
 
-        .badge p {
+        .certificate p {
             margin: 0;
             line-height: 1.5;
         }
 
-        .badge button {
+        .certificate button {
             margin-top: 10px;
             margin-right: 5px;
             padding: 8px 12px;
@@ -103,7 +103,7 @@
             cursor: pointer;
         }
 
-        .badge button:hover {
+        .certificate button:hover {
             background-color: #0056b3;
         } 
         
@@ -177,11 +177,11 @@
             color: #444;
         }
 
-        #badges-list {
+        #Certification-list {
             margin: 20px 0;
         }
 
-        .badge {
+        .certificate {
             background: #fafafa;
             padding: 15px;
             margin: 10px 0;
@@ -189,12 +189,12 @@
             border-radius: 5px;
         }
 
-        .badge p {
+        .certificate p {
             margin: 0;
             line-height: 1.5;
         }
 
-        .badge button {
+        .certificate button {
             margin-top: 10px;
             margin-right: 5px;
             padding: 8px 12px;
@@ -205,7 +205,7 @@
             cursor: pointer;
         }
 
-        .badge button:hover {
+        .certificate button:hover {
             background-color: #0056b3;
         }
         /* Edit Section Styles */
@@ -224,11 +224,11 @@
             color: #444;
         }
 
-        #badges-list {
+        #Certification-list {
             margin: 20px 0;
         }
 
-        .badge {
+        .certificate {
             background: #fafafa;
             padding: 15px;
             margin: 10px 0;
@@ -236,12 +236,12 @@
             border-radius: 5px;
         }
 
-        .badge p {
+        .certificate p {
             margin: 0;
             line-height: 1.5;
         }
 
-        .badge button {
+        .certificate button {
             margin-top: 10px;
             margin-right: 5px;
             padding: 8px 12px;
@@ -252,7 +252,7 @@
             cursor: pointer;
         }
 
-        .badge button:hover {
+        .certificate button:hover {
             background-color: #0056b3;
         }
 
@@ -310,24 +310,24 @@
     </div>
 
     <div id="edit-container">
-        <h1>Edit badges</h1>
-        <div id="badges-list"></div>
+        <h1>Edit Certification</h1>
+        <div id="Certification-list"></div>
         <div id="edit-form-container" style="display: none;">
-            <h2>Edit badge</h2>
+            <h2>Edit certificate</h2>
             <form id="edit-form">
-                <input type="hidden" id="badge-id" />
-                <label for="badge-name">Name:</label>
-                <input type="text" id="badge-name" required />
-                <label for="badge-badgeDescription">badgeDescription:</label>
-                <textarea id="badge-badgeDescription" rows="5" required></textarea>
-                <label for="badge-skills">Skills (comma-separated):</label>
-                <input type="text" id="badge-skills" required />
-                <label for="badge-url">Url:</label>
-                <input type="text" id="badge-url" required />
-                <label for="badge-verify">Verify:</label>
-                <input type="text" id="badge-verify" required />
-                <label for="badge-company">Company:</label>
-                <input type="text" id="badge-company" required />
+                <input type="hidden" id="certificate-id" />
+                <label for="certificate-name">Name:</label>
+                <input type="text" id="certificate-name" required />
+                <label for="certificate-certificateDescription">certificate Description:</label>
+                <textarea id="certificate-certificateDescription" rows="5" required></textarea>
+                <label for="certificate-skills">Skills (comma-separated):</label>
+                <input type="text" id="certificate-skills" required />
+                <label for="certificate-url">Url:</label>
+                <input type="text" id="certificate-url" required />
+                <label for="certificate-verify">Verify:</label>
+                <input type="text" id="certificate-verify" required />
+                <label for="certificate-company">Company:</label>
+                <input type="text" id="certificate-company" required />
                 <div style="display: flex; justify-content: space-between;">
                     <button type="button" onclick="submitEditForm()">Save</button>
                     <button type="button" style="background-color: red;" onclick="cancelEdit()">Cancel</button>
@@ -362,7 +362,7 @@
                         }
                         document.getElementById('login-container').style.display = 'none';
                         document.getElementById('edit-container').style.display = 'block';
-                        fetchbadges();
+                        fetchCertification();
                     } else {
                         document.getElementById('error-message').style.display = 'block';
                     }
@@ -371,56 +371,56 @@
         }
 
 
-        // Fetch badges and display them
-        fetch('/api/badges')
+        // Fetch Certification and display them
+        fetch('/api/certification')
             .then((response) => response.json())
             .then((data) => {
-                const list = document.getElementById('badges-list');
+                const list = document.getElementById('Certification-list');
                 list.innerHTML = '';
-                data.forEach((badge) => {
-                    const badgeDiv = document.createElement('div');
-                    badgeDiv.innerHTML = `
-                        <div class="badge">
-                            <p><strong>${badge.badgeName}</strong>: ${badge.badgeDescription}</p>
-                            <p>Skills: ${badge.skills.join(', ')}</p>
-                            <p>URL : ${badge.url}</p>
-                            <p>Verify : ${badge.verify}</p>
-                            <p>Company : ${badge.company}</p>
-                            <button style="background-color:#007BFF" onclick="showEditForm('${badge._id}', '${badge.badgeName}', '${badge.badgeDescription}', '${badge.skills.join(', ')}' , '${badge.badgeUrl}' , '${badge.verify}' ,' ${badge.company} ' )">Edit</button>
-                            <button style="background-color:#007BFF"  onclick="deletebadge('${badge._id}')">Delete</button>
+                data.forEach((certificate) => {
+                    const certificateDiv = document.createElement('div');
+                    certificateDiv.innerHTML = `
+                        <div class="certificate">
+                            <p><strong>${certificate.certificateName}</strong>: ${certificate.certificateDescription}</p>
+                            <p>Skills: ${certificate.skills.join(', ')}</p>
+                            <p>URL : ${certificate.url}</p>
+                            <p>Verify : ${certificate.verify}</p>
+                            <p>Company : ${certificate.company}</p>
+                            <button style="background-color:#007BFF" onclick="showEditForm('${certificate._id}', '${certificate.certificateName}', '${certificate.certificateDescription}', '${certificate.skills.join(', ')}' , '${certificate.certificateUrl}' , '${certificate.verify}' ,' ${certificate.company} ' )">Edit</button>
+                            <button style="background-color:#007BFF"  onclick="deletecertificate('${certificate._id}')">Delete</button>
                         </div>
                     `;
-                    list.appendChild(badgeDiv);
+                    list.appendChild(certificateDiv);
                 });
             });
 
         // Show the edit form and populate it with existing data
-        function showEditForm(id, name, badgeDescription, skills, url , verify , company) {
+        function showEditForm(id, name, certificateDescription, skills, url , verify , company) {
             document.getElementById('edit-form-container').style.display = 'block';
-            document.getElementById('badge-id').value = id;
-            document.getElementById('badge-name').value = name;
-            document.getElementById('badge-badgeDescription').value = badgeDescription;
-            document.getElementById('badge-skills').value = skills;
-            document.getElementById('badge-url').value = url;
-            document.getElementById('badge-verify').value = verify;
-            document.getElementById('badge-company').value = company;
+            document.getElementById('certificate-id').value = id;
+            document.getElementById('certificate-name').value = name;
+            document.getElementById('certificate-certificateDescription').value = certificateDescription;
+            document.getElementById('certificate-skills').value = skills;
+            document.getElementById('certificate-url').value = url;
+            document.getElementById('certificate-verify').value = verify;
+            document.getElementById('certificate-company').value = company;
         }
 
         // Submit the edit form
         function submitEditForm() {
             if (confirm("Are you sure you want to save changes?")) {
-                const id = document.getElementById('badge-id').value;
-                const name = document.getElementById('badge-name').value;
-                const badgeDescription = document.getElementById('badge-badgeDescription').value;
-                const skills = document.getElementById('badge-skills').value;
-                const url = document.getElementById('badge-url').value;
-                const verify = document.getElementById('badge-verify').value ;
-                const company = document.getElementById('badge-company').value;
+                const id = document.getElementById('certificate-id').value;
+                const name = document.getElementById('certificate-name').value;
+                const certificateDescription = document.getElementById('certificate-certificateDescription').value;
+                const skills = document.getElementById('certificate-skills').value;
+                const url = document.getElementById('certificate-url').value;
+                const verify = document.getElementById('certificate-verify').value ;
+                const company = document.getElementById('certificate-company').value;
 
-                fetch(`/api/badges/${id}`, {
+                fetch(`/api/certification/${id}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, badgeDescription, skills, url,verify,company }),
+                    body: JSON.stringify({ name, certificateDescription,url, skills,verify,company }),
                 })
                     .then((response) => response.json())
                     .then((data) => {
@@ -438,10 +438,10 @@
             document.getElementById('edit-form-container').style.display = 'none';
         }
 
-        // Delete an badge
-        function deletebadge(id) {
-            if (confirm("Are you sure you want to delete this badge? This action cannot be undone.")) {
-                fetch(`/api/badges/${id}`, {
+        // Delete an certificate
+        function deletecertificate(id) {
+            if (confirm("Are you sure you want to delete this certificate? This action cannot be undone.")) {
+                fetch(`/api/certification/${id}`, {
                     method: 'DELETE',
                 })
                     .then((response) => response.json())

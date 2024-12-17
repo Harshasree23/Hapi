@@ -51,7 +51,7 @@ const handlePostApiBadge = async (req, res) => {
 const editBadge = async (req, res) => {
     try {
         const { id } = req.params;
-        const { badgeName, badgeDescription, skills, verify, company } = req.body;
+        const { badgeName, badgeDescription, skills,url, verify, company } = req.body;
         const skillsArray = skills.split(',').map(skill => skill.trim()); // Split and trim skills
 
         const updatedBadge = await badgeModel.findByIdAndUpdate(
@@ -59,6 +59,7 @@ const editBadge = async (req, res) => {
             {
                 badgeName,
                 badgeDescription,
+                badgeUrl:url,
                 skills: skillsArray,
                 verify,
                 company,
