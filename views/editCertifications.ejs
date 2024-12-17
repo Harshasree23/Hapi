@@ -372,7 +372,7 @@
 
 
         // Fetch Certification and display them
-        fetch('/api/certification')
+        fetch('/api/certifications')
             .then((response) => response.json())
             .then((data) => {
                 const list = document.getElementById('Certification-list');
@@ -417,7 +417,7 @@
                 const verify = document.getElementById('certificate-verify').value ;
                 const company = document.getElementById('certificate-company').value;
 
-                fetch(`/api/certification/${id}`, {
+                fetch(`/api/certifications/${id}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, certificateDescription,url, skills,verify,company }),
@@ -441,7 +441,7 @@
         // Delete an certificate
         function deletecertificate(id) {
             if (confirm("Are you sure you want to delete this certificate? This action cannot be undone.")) {
-                fetch(`/api/certification/${id}`, {
+                fetch(`/api/certifications/${id}`, {
                     method: 'DELETE',
                 })
                     .then((response) => response.json())
