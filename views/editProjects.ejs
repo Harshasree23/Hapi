@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project</title>
+    <style>
+       body {
+            font-family: "Nova Mono", monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Login Section Styles */
+        #login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        #login-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        #login-container input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #login-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        #login-container button:hover {
+            background-color: #218838;
+        }
+
+        #login-container p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Edit Section Styles */
+        #edit-container {
+            display: none; /* Hidden by default */
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        #Project-list {
+            margin: 20px 0;
+        }
+
+        .project {
+            background: #fafafa;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .project p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .project button {
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .project button:hover {
+            background-color: #0056b3;
+        } 
+        
+        body {
+            font-family: "Nova Mono", monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Login Section Styles */
+        #login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        #login-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        #login-container input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #login-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        #login-container button:hover {
+            background-color: #218838;
+        }
+
+        #login-container p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Edit Section Styles */
+        #edit-container {
+            display: none; /* Hidden by default */
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        #Project-list {
+            margin: 20px 0;
+        }
+
+        .project {
+            background: #fafafa;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .project p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .project button {
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .project button:hover {
+            background-color: #0056b3;
+        }
+        /* Edit Section Styles */
+        #edit-container {
+            display: none; /* Hidden by default */
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        #Project-list {
+            margin: 20px 0;
+        }
+
+        .project {
+            background: #fafafa;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .project p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .project button {
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .project button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Edit Form Container */
+        #edit-form-container {
+            margin-top: 30px;
+        }
+
+        #edit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #edit-form input, #edit-form textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #edit-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        #edit-form button:hover {
+            background-color: #218838;
+        }
+
+        #edit-form textarea {
+            resize: vertical;
+        }
+
+        #edit-form label {
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Login Section -->
+    <div id="login-container">
+        <h1>Access Restricted</h1>
+        <p>Please enter the password to access this page:</p>
+        <input type="password" id="password-input" placeholder="Enter password" required />
+        <button onclick="verifyPassword()">Submit</button>
+        <p id="error-message" style="color: red; display: none;">Invalid password. Please try again.</p>
+    </div>
+
+    <div id="edit-container">
+        <h1>Edit Project</h1>
+        <div id="Project-list"></div>
+        <div id="edit-form-container" style="display: none;">
+            <h2>Edit project</h2>
+            <form id="edit-form">
+                <input type="hidden" id="project-id" />
+                <label for="project-name">Name:</label>
+                <input type="text" id="project-name" required />
+                <label for="project-projectDescription">Project Description:</label>
+                <textarea id="project-projectDescription" rows="5" required></textarea>
+                <label for="project-skills">Used Technologies (comma-separated):</label>
+                <input type="text" id="project-skills" required />
+                <label for="project-Link">Link:</label>
+                <input type="text" id="project-Link" required />
+                <label for="project-verify">Git:</label>
+                <input type="text" id="project-verify" required />
+                <label for="project-video">Video:</label>
+                <input type="text" id="project-video" required />
+                <label for="project-images">Images:</label>
+                <input type="text" id="project-images" required />
+                <div style="display: flex; justify-content: space-between;">
+                    <button type="button" onclick="submitEditForm()">Save</button>
+                    <button type="button" style="background-color: red;" onclick="cancelEdit()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+
+        // Check for stored password on page load
+        window.onload = function () {
+            const storedPassword = sessionStorage.getItem('password');
+            if (storedPassword) {
+                verifyPassword(storedPassword, true);
+            }
+        };
+
+        function verifyPassword(enteredPassword = null, isStored = false) {
+            const password = enteredPassword || document.getElementById('password-input').value;
+
+            fetch('/api/verify-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        // Save password in sessionStorage if not from stored password
+                        if (!isStored) {
+                            sessionStorage.setItem('password', password);
+                        }
+                        document.getElementById('login-container').style.display = 'none';
+                        document.getElementById('edit-container').style.display = 'block';
+                        fetchProject();
+                    } else {
+                        document.getElementById('error-message').style.display = 'block';
+                    }
+                })
+                .catch((err) => console.error('Error:', err));
+        }
+
+
+        // Fetch Project and display them
+        fetch('/api/Projects')
+            .then((response) => response.json())
+            .then((data) => {
+                const list = document.getElementById('Project-list');
+                list.innerHTML = '';
+                data.forEach((project) => {
+                    const projectDiv = document.createElement('div');
+                    projectDiv.innerHTML = `
+                        <div class="project">
+                            <p><strong>${project.projectName}</strong>: ${project.description}</p>
+                            <p>Used Technologies: ${project.usedTechnologies.join(', ')}</p>
+                            <p>Link : ${project.link}</p>
+                            <p>Git : ${project.git}</p>
+                            <p>Video : ${project.video}</p>
+                            <p>Images :${project.images.join(', ')} </p>
+                            <button style="background-color:#007BFF" onclick="showEditForm('${project._id}', '${project.projectName}', '${project.description}', '${project.usedTechnologies.join(', ')}' , '${project.link}' , '${project.git}' ,' ${project.video} ', ' ${project.images.join(", ")} ' )">Edit</button>
+                            <button style="background-color:#007BFF"  onclick="deleteproject('${project._id}')">Delete</button>
+                        </div>
+                    `;
+                    list.appendChild(projectDiv);
+                });
+            });
+
+        // Show the edit form and populate it with existing data
+        function showEditForm(id, name, projectDescription, skills, Link , verify , video , images) {
+            document.getElementById('edit-form-container').style.display = 'block';
+            document.getElementById('project-id').value = id;
+            document.getElementById('project-name').value = name;
+            document.getElementById('project-projectDescription').value = projectDescription;
+            document.getElementById('project-skills').value = skills;
+            document.getElementById('project-Link').value = Link;
+            document.getElementById('project-verify').value = verify;
+            document.getElementById('project-video').value = video;
+            document.getElementById('project-images').value = images;
+        }
+
+        // Submit the edit form
+        function submitEditForm() {
+            if (confirm("Are you sure you want to save changes?")) {
+                const id = document.getElementById('project-id').value;
+                const name = document.getElementById('project-name').value;
+                const projectDescription = document.getElementById('project-projectDescription').value;
+                const usedTechnologies = document.getElementById('project-skills').value;
+                const Link = document.getElementById('project-Link').value;
+                const git = document.getElementById('project-verify').value ;
+                const video = document.getElementById('project-video').value;
+                const images = document.getElementById('project-images').value;
+
+                fetch(`/api/projects/${id}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, projectDescription,Link, usedTechnologies, git, video , images }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        alert(data.message);
+                        location.reload();
+                    })
+                    .catch((err) => console.error('Error:', err));
+            } else {
+                alert("Changes were not saved.");
+            }
+        }
+
+        // Cancel editing and hide the form
+        function cancelEdit() {
+            document.getElementById('edit-form-container').style.display = 'none';
+        }
+
+        // Delete an project
+        function deleteproject(id) {
+            if (confirm("Are you sure you want to delete this project? This action cannot be undone.")) {
+                fetch(`/api/projects/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        alert(data.message);
+                        location.reload();
+                    })
+                    .catch((err) => console.error('Error:', err));
+            } else {
+                alert("Deletion was canceled.");
+            }
+        }
+    </script>
+</body>
+</html>
