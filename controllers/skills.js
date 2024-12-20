@@ -53,13 +53,13 @@ const handlePostApiSkill = async (req,res) => {
 const editSkill = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, SkillDescription } = req.body;
+        const { name, description } = req.body;
 
         const updatedSkill = await SkillModel.findByIdAndUpdate(
             id,
             {
-                SkillName:name,
-                description : SkillDescription,
+                skillName:name,
+                description : description,
             },
             { new: true }
         );
