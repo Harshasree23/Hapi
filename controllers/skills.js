@@ -49,8 +49,53 @@ const handlePostApiSkill = async (req,res) => {
     }
 }
 
+// Function to edit a Skill
+const editSkill = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, SkillDescription } = req.body;
+
+        const updatedSkill = await SkillModel.findByIdAndUpdate(
+            id,
+            {
+                SkillName:name,
+                description : SkillDescription,
+            },
+            { new: true }
+        );
+
+        if (!updatedSkill) {
+            return res.status(404).json({ error: "Skill not found" });
+        }
+
+        return res.json({ message: "Skill updated successfully", Skill: updatedSkill });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Error in updating Skill data" });
+    }
+};
+
+// Function to delete a Skill
+const deleteSkill = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedSkill = await SkillModel.findByIdAndDelete(id);
+
+        if (!deletedSkill) {
+            return res.status(404).json({ error: "Skill not found" });
+        }
+
+        return res.json({ message: "Skill deleted successfully" });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Error in deleting Skill" });
+    }
+};
+
 module.exports = {
     handleGetApiSkill,
     handleGetSkill,
     handlePostApiSkill,
+    editSkill,
+    deleteSkill,
 }

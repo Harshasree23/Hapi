@@ -1,6 +1,6 @@
 const express = require('express');
 const { handleGetApiBadge, handlePostApiBadge, editBadge, deleteBadge } = require('../controllers/badges');
-const { handleGetApiSkill, handlePostApiSkill } = require('../controllers/skills');
+const { handleGetApiSkill, handlePostApiSkill, editSkill, deleteSkill } = require('../controllers/skills');
 const { handleGetApiproject, handlePostApiproject, handleUpdateApiproject, handleDeleteApiproject } = require('../controllers/projects');
 const { handleGetApicertificate, handlePostApicertificate, editCertificate, deleteCertificate } = require('../controllers/certifications');
 const { handleGetApicontact, handlePostApicontact } = require('../controllers/contacts');
@@ -92,6 +92,8 @@ apiRoute
     .post('/badges/:id' , editBadge)
     .delete('/badges/:id', deleteBadge)
     .post('/skills', handlePostApiSkill)
+    .post('/skills/:id' , editSkill)
+    .delete('/skills/:id' , deleteSkill)
     .post(
         '/projects',
         upload.array('images', 5), // Allow up to 5 images
