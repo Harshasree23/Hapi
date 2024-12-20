@@ -364,7 +364,7 @@
 
 
         // Fetch Skills and display them
-        fetch('/api/Skills')
+        fetch('/api/skills')
             .then((response) => response.json())
             .then((data) => {
                 const list = document.getElementById('Skills-list');
@@ -397,7 +397,7 @@
                 const name = document.getElementById('Skill-name').value;
                 const SkillDescription = document.getElementById('Skill-SkillDescription').value;
 
-                fetch(`/api/Skills/${id}`, {
+                fetch(`/api/skills/${id}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, SkillDescription }),
@@ -421,7 +421,7 @@
         // Delete an Skill
         function deleteSkill(id) {
             if (confirm("Are you sure you want to delete this Skill? This action cannot be undone.")) {
-                fetch(`/api/Skills/${id}`, {
+                fetch(`/api/skills/${id}`, {
                     method: 'DELETE',
                 })
                     .then((response) => response.json())
