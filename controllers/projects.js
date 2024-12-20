@@ -6,7 +6,7 @@ const { projectModel } = require("../models/projects.js")
 const handleGetApiproject = async (req,res) => 
 {
     try {
-        const projects = await projectModel.find({}, { _id: 0, __v: 0 });
+        const projects = await projectModel.find({});
         res.header('Content-Type', 'application/json');
         return res.json(projects);
     }  
@@ -95,13 +95,10 @@ const handleUpdateApiproject = async (req, res) => {
 const handleDeleteApiproject = async (req, res) => {
     try {
         const { id } = req.params;
-
         const deletedProject = await projectModel.findByIdAndDelete(id);
-
         if (!deletedProject) {
             return res.status(404).json({ error: "Project not found" });
         }
-
         return res.json({ message: "Project deleted successfully" });
     } catch (err) {
         return res.status(500).json({ error: "Error in deleting project", details: err.message });
