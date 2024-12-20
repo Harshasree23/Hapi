@@ -318,8 +318,8 @@
                 <input type="hidden" id="Skill-id" />
                 <label for="Skill-name">Name:</label>
                 <input type="text" id="Skill-name" required />
-                <label for="Skill-SkillDescription">SkillDescription:</label>
-                <textarea id="Skill-SkillDescription" rows="3" required></textarea>
+                <label for="Skill-description">Skill Description:</label>
+                <textarea id="Skill-description" rows="3" required></textarea>
                 <div style="display: flex; justify-content: space-between;">
                     <button type="button" onclick="submitEditForm()">Save</button>
                     <button type="button" style="background-color: red;" onclick="cancelEdit()">Cancel</button>
@@ -373,8 +373,8 @@
                     const SkillDiv = document.createElement('div');
                     SkillDiv.innerHTML = `
                         <div class="Skill">
-                            <p><strong>${Skill.SkillName}</strong>: ${Skill.SkillDescription}</p>
-                            <button style="background-color:#007BFF" onclick="showEditForm('${Skill._id}', '${Skill.SkillName}' )">Edit</button>
+                            <p><strong>${Skill.skillName}</strong>: ${Skill.description}</p>
+                            <button style="background-color:#007BFF" onclick="showEditForm('${Skill._id}', '${Skill.skillName}' , ' ${Skill.description} ' )">Edit</button>
                             <button style="background-color:#007BFF"  onclick="deleteSkill('${Skill._id}')">Delete</button>
                         </div>
                     `;
@@ -383,11 +383,11 @@
             });
 
         // Show the edit form and populate it with existing data
-        function showEditForm(id, name, SkillDescription) {
+        function showEditForm(id, name, description) {
             document.getElementById('edit-form-container').style.display = 'block';
             document.getElementById('Skill-id').value = id;
             document.getElementById('Skill-name').value = name;
-            document.getElementById('Skill-SkillDescription').value = SkillDescription;
+            document.getElementById('Skill-description').value = description;
         }
 
         // Submit the edit form
@@ -395,12 +395,12 @@
             if (confirm("Are you sure you want to save changes?")) {
                 const id = document.getElementById('Skill-id').value;
                 const name = document.getElementById('Skill-name').value;
-                const SkillDescription = document.getElementById('Skill-SkillDescription').value;
+                const description = document.getElementById('Skill-description').value;
 
                 fetch(`/api/skills/${id}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, SkillDescription }),
+                    body: JSON.stringify({ name, description }),
                 })
                     .then((response) => response.json())
                     .then((data) => {

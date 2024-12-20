@@ -5,7 +5,7 @@ const { skillModel } = require("../models/skill.js")
 const handleGetApiSkill = async (req,res) => 
 {
     try {
-        const Skills = await skillModel.find({}, { _id: 0, __v: 0 });
+        const Skills = await skillModel.find({});
         res.header('Content-Type', 'application/json');
         return res.json(Skills);
     }  
@@ -32,7 +32,7 @@ const handlePostApiSkill = async (req,res) => {
     
     // getting Skill data from the form
     try{
-        const { SkillName, SkillDescription, learnedFrom, projects, certifications } = req.body;
+        const { SkillName, SkillDescription} = req.body;
        
         if( req.body.password === process.env.password )
         {
