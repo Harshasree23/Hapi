@@ -1,7 +1,8 @@
-    <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
-    <link rel="icon" href="/public/favicon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"><style>
+<link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
+<link rel="icon" href="/public/favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
     * {
         box-sizing: border-box;
         margin: 0px;
@@ -10,7 +11,7 @@
     }
 
     .hover {
-        background-color: rgba(173, 216, 230, 0.8); /* Light blue */
+        background-color: rgba(255, 223, 128, 0.8); /* Light yellow */
         padding: 1rem;
         border-radius: 0.3rem;
         color: black;
@@ -20,21 +21,21 @@
         padding: 5rem;
         margin: 5rem auto;
         width: fit-content;
-        background-color: #f0f8ff; /* Alice Blue */
+        background-color: #fff8dc; /* Cornsilk */
         border-radius: 0.3rem;
         display: grid;
         gap: 3rem;
     }
 
-    a{
+    a {
         text-decoration: none;
         color: inherit;
     }
 
     .goto a {
         text-decoration: none;
-        color: #2c3e50; /* Darker blue-gray */
-        background-color: rgba(173, 216, 230, 0.8); /* Light blue */
+        color: #8b8000; /* Dark Yellow */
+        background-color: rgba(255, 223, 128, 0.8); /* Light yellow */
         font-size: 1.5rem;
         width: fit-content;
         padding: 1rem;
@@ -47,7 +48,7 @@
 
     .goto a:hover,
     .hover:hover {
-        background-color: #87ceeb; /* Sky blue */
+        background-color: #ffd700; /* Gold */
     }
 
     .main-heading {
@@ -57,12 +58,12 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background-color: #e0f7fa; /* Light Cyan */
+        background-color: #ffffe0; /* Light Yellow */
     }
 
     form {
         width: fit-content;
-        background-color: #f5f5dc; /* Beige */
+        background-color: #fffacd; /* Lemon Chiffon */
         display: grid;
         padding: 5rem;
         margin: 2rem auto;
@@ -75,28 +76,28 @@
         padding: 0.4rem;
         font-size: 1rem;
         margin-bottom: 2rem;
-        border: 1px solid #b0c4de; /* Light Steel Blue */
+        border: 1px solid #ffd700; /* Gold */
         border-radius: 0.2rem;
     }
 
     label {
         font-size: 1rem;
         padding: 0.3rem;
-        color: #2c3e50; /* Darker blue-gray */
+        color: #8b8000; /* Dark Yellow */
     }
 
     button {
         padding: 0.5rem;
         border: none;
         border-radius: 0.2rem;
-        background-color: #48d1cc; /* Medium Turquoise */
+        background-color: #ffd700; /* Gold */
         color: white;
         font-size: 1rem;
         cursor: pointer;
     }
 
     button:hover {
-        background-color: #20b2aa; /* Light Sea Green */
+        background-color: #ffcc00; /* Bright Yellow */
     }
 
     form button {
@@ -105,8 +106,7 @@
     }
 
     @media (max-width: 850px) {
-
-        .main-heading{
+        .main-heading {
             flex-wrap: wrap;
             gap: 1rem;
         }
@@ -123,17 +123,10 @@
         .goto a {
             font-size: 1rem;
         }
-
-        /* #APILink {
-            width: 80vw;
-            word-wrap: break-word;
-            white-space: pre-wrap;
-        } */
     }
 
-
     @media (max-width: 576px) {
-        .goto{
+        .goto {
             width: 90%;
         }
     }
