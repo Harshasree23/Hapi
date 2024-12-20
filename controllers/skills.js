@@ -55,11 +55,11 @@ const editSkill = async (req, res) => {
         const { id } = req.params;
         const { name, description } = req.body;
 
-        const updatedSkill = await SkillModel.findByIdAndUpdate(
+        const updatedSkill = await skillModel.findByIdAndUpdate(
             id,
             {
-                skillName:name,
-                description : description,
+                skillName: name,
+                description,
             },
             { new: true }
         );
@@ -79,7 +79,7 @@ const editSkill = async (req, res) => {
 const deleteSkill = async (req, res) => {
     try {
         const { id } = req.params;
-        const deletedSkill = await SkillModel.findByIdAndDelete(id);
+        const deletedSkill = await skillModel.findByIdAndDelete(id);
 
         if (!deletedSkill) {
             return res.status(404).json({ error: "Skill not found" });
