@@ -66,7 +66,7 @@ const handleUpdateApiproject = async (req, res) => {
         const { id } = req.params;
         const { name, projectDescription, usedTechnologies, Link, git, video , images} = req.body;
         const techArray = usedTechnologies.split(",").map((tech) => tech.trim());
-
+        const imgArray = images.split(",").map((img) => img.trim());
         const updatedProject = await projectModel.findByIdAndUpdate(
             id,
             {
@@ -76,7 +76,7 @@ const handleUpdateApiproject = async (req, res) => {
                 link:Link,
                 git,
                 video,
-                images,
+                images: imgArray,
             },
             { new: true }
         );
