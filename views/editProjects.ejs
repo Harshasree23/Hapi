@@ -391,8 +391,8 @@
                             <p style="width:100%">Git : ${project.git}</p>
                             <p style="width:100%">Video : ${project.video}</p>
                             <p style="width:100%">Images :${project.images.join(', ')} </p>
-                            <button style="background-color:#007BFF" onclick="showEditForm('${project._id}', '${project.projectName}', '${project.description}', '${project.usedTechnologies.join(', ')}' , '${project.link}' , '${project.git}' ,' ${project.video} ', ' ${project.images.join(", ")} ' )">Edit</button>
-                            <button style="background-color:#007BFF"  onclick="deleteproject('${project._id}')">Delete</button>
+                            <button style="background-color:green" onclick="showEditForm('${project._id}', '${project.projectName}', '${project.description}', '${project.usedTechnologies.join(', ')}' , '${project.link}' , '${project.git}' ,' ${project.video} ', ' ${project.images.join(", ")} ' )">Edit</button>
+                            <button style="background-color:red"  onclick="deleteproject('${project._id}')">Delete</button>
                         </div>
                     `;
                     list.appendChild(projectDiv);

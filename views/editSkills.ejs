@@ -376,8 +376,8 @@
                     SkillDiv.innerHTML = `
                         <div class="Skill">
                             <p style="width:100%"><strong>${Skill.skillName}</strong>: ${Skill.description}</p>
-                            <button style="background-color:#007BFF" onclick="showEditForm('${Skill._id}', '${Skill.skillName}' , ' ${Skill.description} ' )">Edit</button>
-                            <button style="background-color:#007BFF"  onclick="deleteSkill('${Skill._id}')">Delete</button>
+                            <button style="background-color:green" onclick="showEditForm('${Skill._id}', '${Skill.skillName}' , ' ${Skill.description} ' )">Edit</button>
+                            <button style="background-color:red"  onclick="deleteSkill('${Skill._id}')">Delete</button>
                         </div>
                     `;
                     list.appendChild(SkillDiv);
