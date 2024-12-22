@@ -388,8 +388,8 @@
                             <p style="width:100%">URL : ${badge.badgeUrl}</p>
                             <p style="width:100%">Verify : ${badge.verify}</p>
                             <p style="width:100%">Company : ${badge.company}</p>
-                            <button style="background-color:green" onclick="showEditForm('${badge._id}', '${badge.badgeName}', '${badge.badgeDescription}', '${badge.skills.join(', ')}' , '${badge.badgeUrl}' , '${badge.verify}' ,' ${badge.company} ' )">Edit</button>
-                            <button style="background-color:red"  onclick="deletebadge('${badge._id}')">Delete</button>
+                            <button style="background-color:#008000c4" onclick="showEditForm('${badge._id}', '${badge.badgeName}', '${badge.badgeDescription}', '${badge.skills.join(', ')}' , '${badge.badgeUrl}' , '${badge.verify}' ,' ${badge.company} ' )">Edit</button>
+                            <button style="background-color:#ff0000bd"  onclick="deletebadge('${badge._id}')">Delete</button>
                         </div>
                     `;
                     list.appendChild(badgeDiv);

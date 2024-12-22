@@ -388,8 +388,8 @@
                             <p style="width:100%">URL : ${certificate.url}</p>
                             <p style="width:100%">Verify : ${certificate.verify}</p>
                             <p style="width:100%">Company : ${certificate.company}</p>
-                            <button style="background-color:green" onclick="showEditForm('${certificate._id}', '${certificate.certificateName}', '${certificate.description}', '${certificate.skills.join(', ')}' , '${certificate.url}' , '${certificate.verify}' ,' ${certificate.company} ' )">Edit</button>
-                            <button style="background-color:red"  onclick="deletecertificate('${certificate._id}')">Delete</button>
+                            <button style="background-color:#008000c4" onclick="showEditForm('${certificate._id}', '${certificate.certificateName}', '${certificate.description}', '${certificate.skills.join(', ')}' , '${certificate.url}' , '${certificate.verify}' ,' ${certificate.company} ' )">Edit</button>
+                            <button style="background-color:#ff0000bd"  onclick="deletecertificate('${certificate._id}')">Delete</button>
                         </div>
                     `;
                     list.appendChild(certificateDiv);
