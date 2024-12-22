@@ -12,25 +12,28 @@
     <title>H-api</title>
     <style>
        * {
-            box-sizing: content-box;
-            margin: 0rem;
-            padding: 0rem;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: "Urbanist", serif;
             color: #B8FFFF;
-            
         }
-        body{
+
+        body {
             background-color: #010208;
+            overflow-x: hidden;
         }
+
         .heading {
             font-size: 3rem;
             padding: 1rem;
             color: #B8FFFF; 
-            border-bottom: .5rem solid #B8FFFF;
+            border-bottom: 0.5rem solid #B8FFFF;
             text-shadow: 0.2rem 0.2rem 0.2rem #87ceeb; 
             background-color: #0193f61f;
             font-family: "Nova Mono", monospace;
             border-radius: 0rem 0rem 1.5rem 1.5rem;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .sub {
@@ -41,32 +44,35 @@
 
         .allLinks {
             display: grid;
-            grid-template-columns: 31% 31% 31%;
-            width: fit-content;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 90%;
             margin: 3rem auto;
             padding: 2rem;
-            gap: 4rem;
         }
 
         .linkContainer {
             background-color: #0193f61f;
-            /* border: .2rem solid #B8FFFF; */
-            box-shadow: .2rem .2rem 1rem #B8FFFF ;
-            color: #B8FFFF ;
+            box-shadow: 0.2rem 0.2rem 1rem #B8FFFF;
+            color: #B8FFFF;
             border-radius: 0.3rem;
-            padding: 1rem;
+            padding: 1.5rem;
             min-height: 10rem;
             text-align: center;
-            transition: box-shadow 0.3s ease-in-out;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease forwards;
         }
 
-        /* .linkContainer:hover {
-            box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.2); 
-        } */
+        .linkContainer:hover {
+            transform: scale(1.1);
+            box-shadow: 0.4rem 0.4rem 2rem #B8FFFF;
+        }
 
         .linkDescription {
             width: fit-content;
-            margin: 2rem auto;
+            margin: 1.5rem auto 0;
         }
 
         a {
@@ -74,48 +80,58 @@
             font-family: "Urbanist", sans-serif;
             display: block;
             padding: 1rem;
-            border: .05rem solid #B8FFFF;
-            /* box-shadow: .2rem .2rem 1rem #B8FFFF ; */
+            border: 0.05rem solid #B8FFFF;
             border-radius: 0.3rem;
             text-decoration: none;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            transition: background-color 0.3s ease-in-out;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease;
         }
 
         a:hover {
-            background-color: #07f7eb31; 
-        }
-
-        a:visited, a:focus, a:active {
-            text-decoration: none;
+            background-color: #07f7eb31;
+            transform: translateY(-5px);
         }
 
         footer {
             padding: 1.5rem;
-            min-height: 15vh;
             background-color: #0193f61f;
-            border-top: .5rem solid #B8FFFF;
+            border-top: 0.5rem solid #B8FFFF;
             border-radius: 1.5rem 1.5rem 0rem 0rem;
             text-align: center;
-            color:#B8FFFF;
+            color: #B8FFFF;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .developer, .mail {
             margin: 0.5rem 0;
         }
 
-        @media (max-width: 850px) {
-            .allLinks {
-                grid-template-columns: 45% 45%;
-                gap: 2rem;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
             }
         }
 
-        @media (max-width: 650px) {
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 850px) {
             .allLinks {
-                grid-template-columns: auto;
+                gap: 1rem;
             }
         }
     </style>
