@@ -5,114 +5,150 @@
 <style>
     * {
         box-sizing: border-box;
-        margin: 0px;
-        padding: 0px;
-        font-family: "Nova Mono", monospace;
+        margin: 0;
+        padding: 0;
+        font-family: "Urbanist", serif;
+        color: #B8FFFF;
+    }
+
+    body {
+        background-color: #010208;
+        overflow-x: hidden;
     }
 
     .hover {
-        background-color: rgba(255, 223, 128, 0.8); /* Light yellow */
+        background-color: rgba(1, 147, 246, 0.15); /* Theme Light Blue */
         padding: 1rem;
         border-radius: 0.3rem;
-        color: black;
+        color: #B8FFFF;
+        border: 0.1rem solid #B8FFFF;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .hover:hover {
+        background-color: #0193f6; /* Brighter Blue */
+        transform: scale(1.05);
+        box-shadow: 0.4rem 0.4rem 1rem #B8FFFF;
     }
 
     .goto {
-        padding: 5rem;
-        margin: 5rem auto;
+        padding: 3rem;
+        margin: 3rem auto;
         width: fit-content;
-        background-color: #fff8dc; /* Cornsilk */
+        background-color: rgba(1, 147, 246, 0.15);
         border-radius: 0.3rem;
         display: grid;
-        gap: 3rem;
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
+        gap: 2rem;
+        color: #B8FFFF;
+        border: 0.1rem solid #B8FFFF;
     }
 
     .goto a {
         text-decoration: none;
-        color: #8b8000; /* Dark Yellow */
-        background-color: rgba(255, 223, 128, 0.8); /* Light yellow */
+        color: #B8FFFF;
+        background-color: rgba(1, 147, 246, 0.15);
         font-size: 1.5rem;
         width: fit-content;
         padding: 1rem;
-        border-radius: 0.2rem;
+        border-radius: 0.3rem;
         display: flex;
         gap: 1rem;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
+        border: 0.1rem solid #B8FFFF;
+        transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
-    .goto a:hover,
-    .hover:hover {
-        background-color: #ffd700; /* Gold */
+    .goto a:hover {
+        background-color: #07f7eb31; /* Translucent Cyan */
+        transform: scale(1.1);
+        box-shadow: 0.4rem 0.4rem 1rem #B8FFFF;
     }
 
     .main-heading {
         min-height: 15vh;
-        padding: 1rem;
-        font-size: 1rem;
+        padding: 2rem;
+        font-size: 2rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
-        background-color: #ffffe0; /* Light Yellow */
+        background-color: rgba(1, 147, 246, 0.15);
+        border-bottom: 0.2rem solid #B8FFFF;
+        color: #B8FFFF;
+        font-family: "Nova Mono", monospace;
+        text-shadow: 0.2rem 0.2rem 0.5rem #87ceeb;
+        border-radius: 0 0 1rem 1rem;
+        animation: fadeIn 2s ease-in-out;
     }
 
     form {
         width: fit-content;
-        background-color: #fffacd; /* Lemon Chiffon */
+        background-color: rgba(1, 147, 246, 0.15);
         display: grid;
-        padding: 5rem;
+        padding: 2rem;
         margin: 2rem auto;
-        font-size: 1rem;
+        font-size: 1.2rem;
         border-radius: 0.3rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        color: #B8FFFF;
+        border: 0.1rem solid #B8FFFF;
     }
 
     input {
-        padding: 0.4rem;
-        font-size: 1rem;
-        margin-bottom: 2rem;
-        border: 1px solid #ffd700; /* Gold */
-        border-radius: 0.2rem;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        border: 0.1rem solid #B8FFFF;
+        border-radius: 0.3rem;
+        background-color: rgba(1, 147, 246, 0.05);
+        color: #B8FFFF;
     }
 
     label {
-        font-size: 1rem;
+        font-size: 1.2rem;
         padding: 0.3rem;
-        color: #8b8000; /* Dark Yellow */
+        color: #B8FFFF;
     }
 
     button {
-        padding: 0.5rem;
+        padding: 0.7rem;
         border: none;
-        border-radius: 0.2rem;
-        background-color: #ffd700; /* Gold */
-        color: white;
-        font-size: 1rem;
+        border-radius: 0.3rem;
+        background-color: #0193f6;
+        color: #B8FFFF;
+        font-size: 1.2rem;
         cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     button:hover {
-        background-color: #ffcc00; /* Bright Yellow */
+        background-color: #07f7eb;
+        transform: translateY(-3px);
     }
 
     form button {
-        margin: 0rem auto;
+        margin: 1rem auto;
         width: fit-content;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 
     @media (max-width: 850px) {
         .main-heading {
             flex-wrap: wrap;
             gap: 1rem;
+            font-size: 1.5rem;
         }
 
         form {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .goto {
