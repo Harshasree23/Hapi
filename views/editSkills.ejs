@@ -374,7 +374,7 @@
                     const SkillDiv = document.createElement('div');
                     SkillDiv.innerHTML = `
                         <div class="Skill">
-                            <p><strong>${Skill.skillName}</strong>: ${Skill.description}</p>
+                            <p style="width:100%"><strong>${Skill.skillName}</strong>: ${Skill.description}</p>
                             <button style="background-color:#007BFF" onclick="showEditForm('${Skill._id}', '${Skill.skillName}' , ' ${Skill.description} ' )">Edit</button>
                             <button style="background-color:#007BFF"  onclick="deleteSkill('${Skill._id}')">Delete</button>
                         </div>

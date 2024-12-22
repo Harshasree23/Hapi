@@ -366,8 +366,8 @@
                     const achievementDiv = document.createElement('div');
                     achievementDiv.innerHTML = `
                         <div class="achievement">
-                            <p><strong>${achievement.achievementName}</strong>: ${achievement.description}</p>
-                            <p>Skills: ${achievement.skills.join(', ')}</p>
+                            <p style="width:100%" ><strong>${achievement.achievementName}</strong>: ${achievement.description}</p>
+                            <p style="width:100%" >Skills: ${achievement.skills.join(', ')}</p>
                             <button style="background-color:#007BFF" onclick="showEditForm('${achievement._id}', '${achievement.achievementName}', '${achievement.description}', '${achievement.skills.join(', ')}')">Edit</button>
                             <button style="background-color:#007BFF"  onclick="deleteAchievement('${achievement._id}')">Delete</button>
                         </div>

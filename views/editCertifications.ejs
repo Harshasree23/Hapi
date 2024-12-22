@@ -382,11 +382,11 @@
                     const certificateDiv = document.createElement('div');
                     certificateDiv.innerHTML = `
                         <div class="certificate">
-                            <p><strong>${certificate.certificateName}</strong>: ${certificate.description}</p>
-                            <p>Skills: ${certificate.skills.join(', ')}</p>
-                            <p>URL : ${certificate.url}</p>
-                            <p>Verify : ${certificate.verify}</p>
-                            <p>Company : ${certificate.company}</p>
+                            <p style="width:100%"><strong>${certificate.certificateName}</strong>: ${certificate.description}</p>
+                            <p style="width:100%">Skills: ${certificate.skills.join(', ')}</p>
+                            <p style="width:100%">URL : ${certificate.url}</p>
+                            <p style="width:100%">Verify : ${certificate.verify}</p>
+                            <p style="width:100%">Company : ${certificate.company}</p>
                             <button style="background-color:#007BFF" onclick="showEditForm('${certificate._id}', '${certificate.certificateName}', '${certificate.description}', '${certificate.skills.join(', ')}' , '${certificate.url}' , '${certificate.verify}' ,' ${certificate.company} ' )">Edit</button>
                             <button style="background-color:#007BFF"  onclick="deletecertificate('${certificate._id}')">Delete</button>
                         </div>

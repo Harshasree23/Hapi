@@ -382,11 +382,11 @@
                     const badgeDiv = document.createElement('div');
                     badgeDiv.innerHTML = `
                         <div class="badge">
-                            <p><strong>${badge.badgeName}</strong>: ${badge.badgeDescription}</p>
-                            <p>Skills: ${badge.skills.join(', ')}</p>
-                            <p>URL : ${badge.badgeUrl}</p>
-                            <p>Verify : ${badge.verify}</p>
-                            <p>Company : ${badge.company}</p>
+                            <p style="width:100%"><strong>${badge.badgeName}</strong>: ${badge.badgeDescription}</p>
+                            <p style="width:100%">Skills: ${badge.skills.join(', ')}</p>
+                            <p style="width:100%">URL : ${badge.badgeUrl}</p>
+                            <p style="width:100%">Verify : ${badge.verify}</p>
+                            <p style="width:100%">Company : ${badge.company}</p>
                             <button style="background-color:#007BFF" onclick="showEditForm('${badge._id}', '${badge.badgeName}', '${badge.badgeDescription}', '${badge.skills.join(', ')}' , '${badge.badgeUrl}' , '${badge.verify}' ,' ${badge.company} ' )">Edit</button>
                             <button style="background-color:#007BFF"  onclick="deletebadge('${badge._id}')">Delete</button>
                         </div>
